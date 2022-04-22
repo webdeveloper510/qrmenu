@@ -30,7 +30,7 @@
                 </div>
     
                 @else
-                <!-- <div class="append_checkbox"></div> -->
+                 <div class="append_checkbox"></div> 
                 <div class="field_wrapper">
                     <div>
                         <!-- <input type="text" name="tips[]" value=""/>  -->
