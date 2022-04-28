@@ -337,10 +337,16 @@ class RestorantController extends Controller
         
         $restaurant->description = strip_tags($request->description);
         $restaurant->minimum = strip_tags($request->minimum);
-        $restaurant->vat = strip_tags($request->vat);
-        //$restaurant->tips = strip_tags($request->tips);
-        $restaurant->tips = implode(",",$request->tips);
-        $restaurant->custom_tip = $request->custom_tip;
+
+        if($request->has('vat')){
+            $restaurant->vat = strip_tags($request->vat);
+        }
+        if($request->has('tips')){
+            $restaurant->tips = implode(",",$request->tips);
+        }
+        
+            $restaurant->custom_tip = $request->custom_tip;
+        
 
         if($request->has('fee')){
             $restaurant->fee = $request->fee;

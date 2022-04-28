@@ -1,5 +1,5 @@
 
-<?php echo $__env->make('partials.input',['id'=>'vat','name'=>__('VAT percentage( for all menu items )'),'placeholder'=>__('Item VAT percentage'),'value'=>$restorant->vat==""?$restorant->getConfig('default_tax_value',0):$restorant->vat,'required'=>false,'type'=>'number'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('partials.input',['id'=>'vat','name'=>__('VAT percentage( for all menu items )'),'placeholder'=>__('Item VAT percentage'),'value'=>$restorant->vat==""?$restorant->getConfig('default_tax_value',0):$restorant->vat,'required'=>false,'type'=>'number','min'=>0], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 
@@ -32,11 +32,11 @@
                 <?php else: ?>
                  <div class="append_checkbox"></div> 
                 <div class="field_wrapper">
-                    <div>
-                        <!-- <input type="text" name="tips[]" value=""/>  -->
+                    <!-- <div>
+                        
                         <div  class="minus_div"><input type="text" name="tips_input" class="form-control tips_inputs" value="" id="tips_input"/><a href="javascript:void(0);" class="remove_button"><i class="fa fa-minus-circle"></i></a></div>
 
-                    </div>
+                    </div> -->
                 </div>
                 <?php endif; ?>
 
@@ -44,7 +44,7 @@
         <div class="col-md-6">
             <label class="form-control-label" for="tips">Custom Tip Field</label>
                 <div class="material-switch" >
-                    <input id="switch-primary-1" value="" name="custom_tip" type="checkbox" <?php if ($restorant->custom_tip == 1) { echo "checked"; } ?>>
+                    <input id="switch-primary-1" value="<?= $restorant->custom_tip == 1 ? 1 : 0; ?>" name="custom_tip" type="checkbox" <?php if ($restorant->custom_tip == 1) { echo "checked"; } ?>>
 
                     <label for="switch-primary-1" ></label>
                 </div>
@@ -53,15 +53,10 @@
 
     <div class="buttons_div">
     <a href="javascript:void(0);" class="add_button" title="Add field">+Add Preset</a>
-    <button type="button" class="btn btn-success" id="save_tips">SAVE</button></div>
+    <button type="button" class="btn btn-success" id="save_tips">Save Preset Tip</button></div>
     <br>
 
-    <!-- <label class="form-control-label" for="tips">Custom Tip Field</label>
-    <div class="material-switch" >
-        <input id="switch-primary-1" value="" name="custom_tip" type="checkbox" <?php if ($restorant->custom_tip == 1) { echo "checked"; } ?>>
-
-        <label for="switch-primary-1" ></label>
-    </div> -->
+   
 
     <?php echo $__env->make('partials.fields',['fields'=>[
         ['required'=>true,'ftype'=>'input','type'=>'number','placeholder'=>"Minimum order",'name'=>'Minimum order', 'additionalInfo'=>'Enter Minimum order value', 'id'=>'minimum', 'value'=>$restorant->minimum],
@@ -116,14 +111,17 @@
 .material-switch > input[type="checkbox"]:checked + label::before {
   background: inherit;
   opacity: 0.5;
+  background: green;
 }
 
 .material-switch > input[type="checkbox"]:checked + label::after {
   background: inherit;
   left: 20px;
+  background: green;
 }
 input#tips_input {
     border: 1px solid #cad1d7 !important;
+    width: 80px !important;
 }
 button.delete_tips {
     padding: 0px 20px;
@@ -149,6 +147,7 @@ a.remove_button {
 
 .minus_div {
     display: flex;
+    margin-top: 20px;
 }
 
 input#vat {
@@ -223,11 +222,9 @@ span.prec {
 
             $(".tips_inputs").each(function( index ) {
                var input_val=  $(this).val();
-               //var input_html=  $(this).html();
-               
+              
                var input_html=  $(this).parent().html();
-               //$(input_html).remove();
-               //$('.append_checkbox').append('<input name="tips[]" class="tips-input" id="tips" type="checkbox" value="'+input_val+'">&nbsp;<label>'+input_val+' %</label><button type="button" class="delete_tips" id="" onclick="function delete_tips('+restaurant_id+','+input_val+')">X</button><br>');
+               
                $('.append_checkbox').append('<input name="tips[]" class="tips-input" id="tips" type="checkbox" value="'+input_val+'"><label style="padding-left:4px">'+input_val+' %</label><button type="button" class="delete_tips" id="" onclick="delete_tips_before_save('+restaurant_id+','+input_val+')">X</button><br>');
                
             });
@@ -258,14 +255,10 @@ span.prec {
         });
     }
     function delete_tips_before_save(restaurant_id,tips){
-        //alert(restaurant_id);
-        //alert(tips);
+        
         var url = <?php echo json_encode(url('/')); ?>
 
-        //$('input[value="'+tips+'"]').prev().remove();
         
-        $('input[value="'+tips+'"]').html().replace(/&nbsp;/gi, '');
-        $('input[value="'+tips+'"]').next().next().next().next().remove();
         $('input[value="'+tips+'"]').next().next().next().remove();
         $('input[value="'+tips+'"]').next().next().remove();
         $('input[value="'+tips+'"]').next().remove();

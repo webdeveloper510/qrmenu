@@ -151,7 +151,7 @@ class BaseOrderRepository extends Controller
             $this->order->checkout_customer_email_field=$this->request->checkout_customer_email_field;
             $comment=$this->request->comment;
 
-//echo "<pre>";print_r($this->request);die;
+
             $expeditionsTypes=['delivery'=>1,'pickup'=>2,'dinein'=>3]; //1- delivery 2 - pickup 3-dinein
             $this->order->delivery_method=$expeditionsTypes[$this->expedition];  
 
@@ -176,7 +176,9 @@ class BaseOrderRepository extends Controller
 
             $restorant= Vendor::where('id',$last_order[0]['restorant_id'])->get();
             $delivery_method= $this->request->delivery_method;
-            $tips = $this->request->tips;
+            if($request->has('tips')){
+                $tips = $this->request->tips;
+            }
 
             $tips_cal= ($tips/100)*$subtotal;
         

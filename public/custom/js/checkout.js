@@ -72,7 +72,7 @@ var disableFunctionsQR=function(){
     //$("input:radio[name=deliveryType]").trigger("change");
   }
 
-var checkPrivacyPolicy = function(){
+/*var checkPrivacyPolicy = function(){
     console.log($('#privacypolicy').is(':checked'));
     console.log($('#special_offers').is(':checked'));
     console.log('ffff');
@@ -80,15 +80,19 @@ var checkPrivacyPolicy = function(){
        
     //if ($('#privacypolicy').is(':checked') && $('#special_offers').is(':checked')) {
  
- // setTimeout(function() {
-    console.log('fred');
+
                         $('.paymentbutton').attr("disabled", true);
-                    // }, 3000);
+                    
         
     }
+}*/
+
+var checkPrivacyPolicy = function(){
+  
+   if ($('#privacypolicy').is(':checked')==false) {
+         $('.paymentbutton').attr("disabled", true);
+    }
 }
-
-
    
     
 
@@ -115,7 +119,6 @@ $("#phone").change(function() {
 // });
 
 
-
     $('.tip_amt strong').html('€0');
     setTimeout(function(){
         var total_ori = $('.ammount1 strong').html();
@@ -136,10 +139,39 @@ $("#phone").change(function() {
 
     }, 3000);
 
+
+
+//$(".tips-input1").onchange(function() {
+$(document).on('change','.tips-input1',function(){
+    if($('.tips-input1').val()!=""){
+        $('.tips-input').removeClass('highlight');
+    }
+});
+
 $(document).on("click",".tips-input",function() {
     var tip_val = $(this).val();
-    $('.tips-input').removeClass('highlight');
-    $(this).addClass('highlight');
+    var tip_val1=$('.tips-input1').val();
+    console.log(tip_val1);
+     $('.tips-input').removeClass('highlight');
+   if(tip_val1==undefined)
+   {
+      $(this).addClass('highlight');
+   }
+   else
+   {
+    $(this).removeClass('highlight');
+     if($('.tips-input1').val()!=""){
+        $('.tips-input').removeClass('highlight');
+    }
+    else{
+        $('.tips-input').removeClass('highlight');
+         $(this).addClass('highlight');
+    }
+   }
+   
+         
+
+  
     tip_val = tip_val.replace('%', '');
     tip_val = $.trim(tip_val);
     $(document.body).find('#checkoutTipsField').val(tip_val);
@@ -174,7 +206,7 @@ $(document).on("change",".tips-input1",function() {
     $('.tip_amt strong').html('€'+tip_cal);
 });
 
-/*$("#privacypolicy,#special_offers").change(function() {
+$("#privacypolicy").change(function() {
    
     if(this.checked) {
 
@@ -182,17 +214,11 @@ $(document).on("change",".tips-input1",function() {
     }else{
         $('.paymentbutton').attr("disabled", true);
     }
-});*/
+});
+
+
+
 /*$(document.body).on('change','#privacypolicy,#special_offers',function(){
-
-    //console.log(this.is(':checked'));
-    console.log(this);
-    console.log(this.checked);
-
-})*/
-
-
-$(document.body).on('change','#privacypolicy,#special_offers',function(){
     
     $(this).val(1);
     if(this.checked){
@@ -213,7 +239,7 @@ $(document.body).on('change','#privacypolicy,#special_offers',function(){
     }
 
 
-})
+})*/
 
 var validateAddressInArea = function(positions, area){
     var paths = [];

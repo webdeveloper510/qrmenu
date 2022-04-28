@@ -41,7 +41,7 @@
                                     <!-- <br><input type="text" class="input-text" value=""><br> -->
                                     @if($custom_tip==1)
 
-                                      <br><input type="number" name="tips" class="tips-input1" id="tips">%<br>  
+                                      <br><input type="number" name="tips" class="tips-input1" id="tips" min="0">$<br>  
                                     <!-- <div class="tips-radio mb-3"> 
                                       <input name="tips" class="tips-input1" id="tips" type="radio" value="">
                                       <label class="tips-label">{{ __('Custom $') }}</label>
@@ -203,7 +203,7 @@
         <!-- <div class="text-left pl-4"> -->
         <div class="text-center">
            <div class="custom-control custom-checkbox mb-3">
-                <input class="custom-control-input" id="special_offers" type="checkbox" value='0'>
+                <input class="custom-control-input" id="special_offers" type="checkbox" value='1' checked>
               
                 <label class="custom-control-label special_offers" for="special_offers">
                    I agree to be contacted for offers, special deals, and other marketing communcation
@@ -272,12 +272,12 @@
     input.tips-input1 {
         border: 2px solid #000000;
         margin-top: 15px;
-        width: 60px;
+        width: 100px;
         padding: 10px;
         margin-bottom: 15px;
     }
     .highlight {
-        background: yellow !important;
+        background: #7082E7 !important;
     }
 
    /* .custom-control-label:after, .custom-control-label:before {
@@ -325,6 +325,11 @@ label.custom-control-label.special_offers::after {
 }
 label.custom-control-label.communcation .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
     background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e);
+}
+
+input#tips {
+    border-radius: 5px;
+    border: 1px solid #d6d6d6;
 }
 
   </style>
