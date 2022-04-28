@@ -176,9 +176,9 @@ class BaseOrderRepository extends Controller
 
             $restorant= Vendor::where('id',$last_order[0]['restorant_id'])->get();
             $delivery_method= $this->request->delivery_method;
-            if($request->has('tips')){
-                $tips = $this->request->tips;
-            }
+           
+            $tips = $this->request->tips;
+            
 
             $tips_cal= ($tips/100)*$subtotal;
         
