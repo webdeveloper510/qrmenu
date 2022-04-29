@@ -322,6 +322,8 @@ unset($__errorArgs, $__bag); ?>
     }
     .highlight {
         background: #7082E7 !important;
+        color: white;
+        font-weight: 600;
     }
 
    /* .custom-control-label:after, .custom-control-label:before {
@@ -373,8 +375,10 @@ label.custom-control-label.communcation .custom-checkbox .custom-control-input:c
 
 input#tips {
     border-radius: 5px;
-    border: 1px solid #d6d6d6;
+    border: 3px solid #7082e7;
 }
+
+
 
   </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

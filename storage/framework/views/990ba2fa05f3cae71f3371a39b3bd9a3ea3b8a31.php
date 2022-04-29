@@ -225,8 +225,8 @@ span.prec {
               
                var input_html=  $(this).parent().html();
                
-               $('.append_checkbox').append('<input name="tips[]" class="tips-input" id="tips" type="checkbox" value="'+input_val+'"><label style="padding-left:4px">'+input_val+' %</label><button type="button" class="delete_tips" id="" onclick="delete_tips_before_save('+restaurant_id+','+input_val+')">X</button><br>');
-               
+               $('.append_checkbox').append('<input name="tips[]" class="tips-input" id="tips" type="checkbox" value="'+input_val+'" style="display:none;" checked><label style="padding-left:4px">'+input_val+' %</label><button type="button" class="delete_tips" id="" onclick="delete_tips_before_save('+restaurant_id+','+input_val+')">X</button><br>');
+               $('.minus_div').remove();
             });
         }
             

@@ -119,22 +119,22 @@ $("#phone").change(function() {
 // });
 
 
-    $('.tip_amt strong').html('€0');
+    $('.tip_amt strong').html('$0');
     setTimeout(function(){
         var total_ori = $('.ammount1 strong').html();
         var tax_ammount = $('#tax_hidden').val();
         
         var sub_total_ori = $('.ammount_sub strong').html();
-        var sub_total = sub_total_ori.replace('€', '');
+        var sub_total = sub_total_ori.replace('$', '');
         var tax_ammount =  (tax_ammount * sub_total / 100).toFixed(2);
 
         var fn_tot= parseFloat(tax_ammount)+parseFloat(total_ori);
         fn_tot= fn_tot.toFixed(2);
-        $('.tax_ammount strong').html('€'+tax_ammount);
-        $('.ammount1 strong').html('€'+fn_tot);
+        $('.tax_ammount strong').html('$'+tax_ammount);
+        $('.ammount1 strong').html('$'+fn_tot);
 
         var sub = $('.ammount_sub strong').html();
-        sub = sub.replace('€', '');
+        sub = sub.replace('$', '');
         $(document.body).find('#checkout_subtotal_field').val(sub);
 
     }, 3000);
@@ -142,7 +142,15 @@ $("#phone").change(function() {
 
 
 //$(".tips-input1").onchange(function() {
+$(document).on('focus','.tips-input1',function(){
+   setTimeout(function() {
+    if($('.tips-input1').val()!=""){
+        $('.tips-input').removeClass('highlight');
+    }
+    }, 1000);
+});
 $(document).on('change','.tips-input1',function(){
+   
     if($('.tips-input1').val()!=""){
         $('.tips-input').removeClass('highlight');
     }
@@ -176,18 +184,18 @@ $(document).on("click",".tips-input",function() {
     tip_val = $.trim(tip_val);
     $(document.body).find('#checkoutTipsField').val(tip_val);
     var sub_total_ori = $('.ammount_sub strong').html();
-    var sub_total = sub_total_ori.replace('€', '');
+    var sub_total = sub_total_ori.replace('$', '');
     var tip_cal =  (tip_val * sub_total / 100).toFixed(2);
     
     var tax_ammount = $('#tax_hidden').val();
-    tax_ammount = tax_ammount.replace('€', '');
+    tax_ammount = tax_ammount.replace('$', '');
     tax_ammount =  (tax_ammount * sub_total / 100).toFixed(2);
-    $('.tax_ammount strong').html('€'+tax_ammount);
+    $('.tax_ammount strong').html('$'+tax_ammount);
 
     var fn_tot= parseFloat(tip_cal)+parseFloat(sub_total)+parseFloat(tax_ammount);
      fn_tot= fn_tot.toFixed(2);
-    $('.ammount1 strong').html('€'+fn_tot);
-    $('.tip_amt strong').html('€'+tip_cal);
+    $('.ammount1 strong').html('$'+fn_tot);
+    $('.tip_amt strong').html('$'+tip_cal);
 
 });
 //$(".tips-input1").change(function() {
@@ -197,13 +205,13 @@ $(document).on("change",".tips-input1",function() {
     
     
     var sub_total_ori = $('.ammount_sub strong').html();
-    var sub_total = sub_total_ori.replace('€', '');
+    var sub_total = sub_total_ori.replace('$', '');
     var tip_cal =  (tip_val * sub_total / 100).toFixed(2);
     
     var fn_tot= parseFloat(tip_cal)+parseFloat(sub_total);
      fn_tot= fn_tot.toFixed(2);
-    $('.ammount1 strong').html('€'+fn_tot);
-    $('.tip_amt strong').html('€'+tip_cal);
+    $('.ammount1 strong').html('$'+fn_tot);
+    $('.tip_amt strong').html('$'+tip_cal);
 });
 
 $("#privacypolicy").change(function() {
