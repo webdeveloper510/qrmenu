@@ -167,7 +167,7 @@
      <h4>{{ __('Time to prepare') }}: {{ $order->time_to_prepare ." " .__('minutes')}}</h4>
      <br/>
      @endif
-     <h5>{{ __("Tips") }}: €{{ $tips_total = round(($order->tips/100) * $order->order_price,2) }}</h5>
+     
      <h5>{{ __("NET") }}: @money( $order->order_price-$order->restorant->vat, $currency ,true)</h5>
      <!-- <h5>{{ __("VAT") }}: @money( $order->vatvalue, $currency,$convert)</h5> -->
      <h5>{{ __("VAT") }}: {{ $vat_total = round(($order->restorant->vat/100) * $order->order_price,2)}}</h5>
@@ -180,7 +180,10 @@
         <h4>{{ __("Coupon code") }}: {{$order->coupon}}</h4>
      @endif
      <hr />
-     <h3>{{ __("TOTAL") }}: @money( $order->delivery_price+$order->order_price_with_discount+$tips_total+$vat_total, $currency,true)</h3>
+     <h5>{{ __("Tips") }}:  @money(($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true)  </h5>
+
+     <h3>{{ __("TOTAL") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true)</h3>
+     <h3>{{ __("GRAND TOTAL") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total+($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true)</h3>
      <hr />
      <h4>{{ __("Payment method") }}: {{ __(strtoupper($order->payment_method)) }}</h4>
      <h4>{{ __("Payment status") }}: {{ __(ucfirst($order->payment_status)) }}</h4>

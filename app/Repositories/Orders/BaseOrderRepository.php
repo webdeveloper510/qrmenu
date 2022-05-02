@@ -151,7 +151,6 @@ class BaseOrderRepository extends Controller
             $this->order->checkout_customer_email_field=$this->request->checkout_customer_email_field;
             $comment=$this->request->comment;
 
-
             $expeditionsTypes=['delivery'=>1,'pickup'=>2,'dinein'=>3]; //1- delivery 2 - pickup 3-dinein
             $this->order->delivery_method=$expeditionsTypes[$this->expedition];  
 
@@ -179,14 +178,20 @@ class BaseOrderRepository extends Controller
            
             $tips = $this->request->tips;
             
+            
 
-            $tips_cal= ($tips/100)*$subtotal;
-        
+                
      
             $vat =  $restorant[0]->vat;
             $vatcal = ($subtotal/100) * $vat;
             $netcal= ($subtotal- $vat);
-             
+            
+            $total = $subtotal + $vatcal; 
+
+            $tips_cal= ($tips/100)*$total;
+
+
+
             $user= User::where('id', $restorant[0]->user_id)->get();
             $email = $this->request->checkout_customer_email_field;
 

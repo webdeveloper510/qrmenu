@@ -17,7 +17,7 @@
             <?php if(!empty($tips_datas)): ?>
             <div class="append_checkbox">
                 <?php $__currentLoopData = $tips_datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tips_data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <input name="tips[]" class="tips-input" id="tips" type="checkbox" value="<?php echo $tips_data;?>" checked>
+                  <input name="tips[]" class="tips-input" id="tips" type="checkbox" value="<?php echo $tips_data;?>" checked style="display:none;">
                  <label><?php echo e($tips_data); ?> %</label><button type="button" class="delete_tips" onclick="delete_tips('<?php echo $restorant->id?>','<?php echo $tips_data?>')">X</button><br>
                   
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

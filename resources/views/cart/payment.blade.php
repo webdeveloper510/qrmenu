@@ -51,9 +51,7 @@
                                     @endif
                             
                                     <br>
-                            <span><strong>{{ __('Tip Amount:') }}</strong></span>
-                            <span class="tip_amt"><strong></strong></span>
-                            <br>
+                           
 
                             <span v-if="totalPrice"><strong>{{ __('Subtotal') }}:</strong></span>
                             <span v-if="totalPrice" class="ammount_sub"><strong>@{{ totalPriceFormat}}</strong></span>
@@ -84,6 +82,13 @@
 
                             </strong></span>
                             <input v-if="totalPrice" type="hidden" id="tootalPricewithDeliveryRaw" :value="withDelivery" />
+                            <br><br>
+
+                            <span><strong>{{ __('Tip Amount:') }}</strong></span>
+                            <span class="tip_amt"><strong></strong></span>
+                            <br>
+                            <span><strong>{{ __('Grand Total:') }}</strong></span>
+                            <span class="grand_amt"><strong></strong></span>
                             <br>
                            <!--   <span v-if="totalPrice"><strong>{{ __('Email') }}:</strong></span>
                             <input type="email" class="form-control" name="checkout_customer_email_field" id="checkout_customer_email_field">

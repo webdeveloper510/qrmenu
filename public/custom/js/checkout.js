@@ -111,12 +111,6 @@ $("#phone").change(function() {
     $(document.body).find('#checkoutPayPhoneField').val($(document.body).find('#phone').val());
    
 });
-// $("input[type=radio][name=tips]").change(function() {
-
-//     alert("gf");
-//     alert($("input[name=tips]:checked").val());
-//     $(document.body).find('#checkoutTipsField').val($(document.body).find('input[name=tips]:checked').val());
-// });
 
 
     $('.tip_amt strong').html('0');
@@ -137,68 +131,170 @@ $("#phone").change(function() {
         var sub = $('.ammount_sub strong').html();
         sub = sub.replace(currency, '');
         $(document.body).find('#checkout_subtotal_field').val(sub);
+        $('.grand_amt strong').html(currency+fn_tot);
 
     }, 3000);
 
 
-
-//$(".tips-input1").onchange(function() {
 $(document).on('focus','.tips-input1',function(){
-   setTimeout(function() {
-    if($('.tips-input1').val()!=""){
-        $('.tips-input').removeClass('highlight');
+    var tip_val = $(this).val();
+    var tip_val1=$('.tips-input1').val();
+
+    $('.tips-input').removeClass('highlight');
+    if(tip_val1==undefined)
+    {
+      $(this).addClass('highlight');
     }
-    }, 1000);
+    else
+    {
+        
+        $(this).removeClass('highlight');
+        if($('.tips-input1').val()!=""){
+            $('.tips-input').removeClass('highlight');
+
+        }
+        else{
+            $('.tips-input').removeClass('highlight');
+            //$(this).addClass('highlight');
+            var tip_val = $('.tips-input1').val();
+            var total_ori = $('.ammount1 strong').html();
+            var currency = total_ori.replace(/[\d\., ]/g, '');
+            var total = total_ori.replace(currency, '');
+            var tip_cal =  (tip_val * total / 100).toFixed(2);
+            
+            var fn_tot= parseFloat(tip_cal)+parseFloat(total);
+            fn_tot= fn_tot.toFixed(2);
+
+            $('.grand_amt strong').html(currency+fn_tot);
+            $('.tip_amt strong').html(currency+tip_cal);
+        }
+    }
 });
-$(document).on('change','.tips-input1',function(){
+
+$(document).on('keyup','.tips-input1',function(){
+    var tip_val = $(this).val();
+    var tip_val1=$('.tips-input1').val();
+
+    $('.tips-input').removeClass('highlight');
+    if(tip_val1==undefined)
+    {
+      $(this).addClass('highlight');
+    }
+    else
+    {
+        
+        $(this).removeClass('highlight');
+        if($('.tips-input1').val()!=""){
+            $('.tips-input').removeClass('highlight');
+
+           
+    
+            
+            var tip_val = $('.tips-input1').val();
+            var total_ori = $('.ammount1 strong').html();
+            var currency = total_ori.replace(/[\d\., ]/g, '');
+            var total = total_ori.replace(currency, '');
+            var tip_cal =  (tip_val * total / 100).toFixed(2);
+            
+            var fn_tot= parseFloat(tip_cal)+parseFloat(total);
+             fn_tot= fn_tot.toFixed(2);
+
+            $('.grand_amt strong').html(currency+fn_tot);
+            $('.tip_amt strong').html(currency+tip_cal);
+        
+        }
+        else{
+            $('.tips-input').removeClass('highlight');
+            //$(this).addClass('highlight');
+
+
+        }
+    }
+});
+/*$(document).on('change','.tips-input1',function(){
    
     if($('.tips-input1').val()!=""){
         $('.tips-input').removeClass('highlight');
     }
-});
+});*/
 
 $(document).on("click",".tips-input",function() {
     var tip_val = $(this).val();
     var tip_val1=$('.tips-input1').val();
-    console.log(tip_val1);
-     $('.tips-input').removeClass('highlight');
-   if(tip_val1==undefined)
-   {
-      $(this).addClass('highlight');
-   }
-   else
-   {
-    $(this).removeClass('highlight');
-     if($('.tips-input1').val()!=""){
-        $('.tips-input').removeClass('highlight');
+    
+    $('.tips-input').removeClass('highlight');
+    if(tip_val1==undefined)
+    {
+        $(this).addClass('highlight');
     }
-    else{
-        $('.tips-input').removeClass('highlight');
-         $(this).addClass('highlight');
+    else
+    {
+        $(this).removeClass('highlight');
+        if($('.tips-input1').val()!=""){
+            $('.tips-input').removeClass('highlight');
+        }
+        else{
+            $('.tips-input').removeClass('highlight');
+            $(this).addClass('highlight');
+
+            tip_val = tip_val.replace('%', '');
+            tip_val = $.trim(tip_val);
+            $(document.body).find('#checkoutTipsField').val(tip_val);
+            var sub_total_ori = $('.ammount_sub strong').html();
+            var currency = sub_total_ori.replace(/[\d\., ]/g, '');
+            var sub_total = sub_total_ori.replace(currency, '');
+
+            var total_ori = $('.ammount1 strong').html();
+            var currency_total = total_ori.replace(/[\d\., ]/g, '');
+            var total = total_ori.replace(currency_total, '');
+            
+            var tax_ammount = $('#tax_hidden').val();
+            tax_ammount = tax_ammount.replace(currency, '');
+            tax_ammount =  (tax_ammount * sub_total / 100).toFixed(2);
+            $('.tax_ammount strong').html(currency+tax_ammount);
+
+            var tip_cal =  (tip_val * total / 100).toFixed(2);
+
+            var fn_tot= parseFloat(sub_total)+parseFloat(tax_ammount);
+             fn_tot= fn_tot.toFixed(2);
+            $('.ammount1 strong').html(currency+fn_tot);
+            $('.tip_amt strong').html(currency+tip_cal);
+
+            var grand_tot= parseFloat(total)+parseFloat(tip_cal);
+             grand_tot= grand_tot.toFixed(2);
+            $('.grand_amt strong').html(currency+grand_tot);
+        }
     }
-   }
    
          
 
   
-    tip_val = tip_val.replace('%', '');
+    /*tip_val = tip_val.replace('%', '');
     tip_val = $.trim(tip_val);
     $(document.body).find('#checkoutTipsField').val(tip_val);
     var sub_total_ori = $('.ammount_sub strong').html();
     var currency = sub_total_ori.replace(/[\d\., ]/g, '');
     var sub_total = sub_total_ori.replace(currency, '');
-    var tip_cal =  (tip_val * sub_total / 100).toFixed(2);
+
+    var total_ori = $('.ammount1 strong').html();
+    var currency_total = total_ori.replace(/[\d\., ]/g, '');
+    var total = total_ori.replace(currency_total, '');
     
     var tax_ammount = $('#tax_hidden').val();
     tax_ammount = tax_ammount.replace(currency, '');
     tax_ammount =  (tax_ammount * sub_total / 100).toFixed(2);
     $('.tax_ammount strong').html(currency+tax_ammount);
 
-    var fn_tot= parseFloat(tip_cal)+parseFloat(sub_total)+parseFloat(tax_ammount);
+    var tip_cal =  (tip_val * total / 100).toFixed(2);
+
+    var fn_tot= parseFloat(sub_total)+parseFloat(tax_ammount);
      fn_tot= fn_tot.toFixed(2);
     $('.ammount1 strong').html(currency+fn_tot);
     $('.tip_amt strong').html(currency+tip_cal);
 
+    var grand_tot= parseFloat(total)+parseFloat(tip_cal);
+     grand_tot= grand_tot.toFixed(2);
+    $('.grand_amt strong').html(currency+grand_tot);*/
 });
 //$(".tips-input1").change(function() {
 $(document).on("change",".tips-input1",function() {
@@ -206,14 +302,15 @@ $(document).on("change",".tips-input1",function() {
     var tip_val = $('.tips-input1').val();
     
     
-    var sub_total_ori = $('.ammount_sub strong').html();
-    var currency = sub_total_ori.replace(/[\d\., ]/g, '');
-    var sub_total = sub_total_ori.replace(currency, '');
-    var tip_cal =  (tip_val * sub_total / 100).toFixed(2);
+    var total_ori = $('.ammount1 strong').html();
+    var currency = total_ori.replace(/[\d\., ]/g, '');
+    var total = total_ori.replace(currency, '');
+    var tip_cal =  (tip_val * total / 100).toFixed(2);
     
-    var fn_tot= parseFloat(tip_cal)+parseFloat(sub_total);
+    var fn_tot= parseFloat(tip_cal)+parseFloat(total);
      fn_tot= fn_tot.toFixed(2);
-    $('.ammount1 strong').html(currency+fn_tot);
+
+    $('.grand_amt strong').html(currency+fn_tot);
     $('.tip_amt strong').html(currency+tip_cal);
 });
 

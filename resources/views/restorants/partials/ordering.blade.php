@@ -17,7 +17,7 @@
             @if(!empty($tips_datas))
             <div class="append_checkbox">
                 @foreach($tips_datas as $tips_data)
-                  <input name="tips[]" class="tips-input" id="tips" type="checkbox" value="<?php echo $tips_data;?>" checked>
+                  <input name="tips[]" class="tips-input" id="tips" type="checkbox" value="<?php echo $tips_data;?>" checked style="display:none;">
                  <label>{{$tips_data}} %</label><button type="button" class="delete_tips" onclick="delete_tips('<?php echo $restorant->id?>','<?php echo $tips_data?>')">X</button><br>
                   
                 @endforeach

@@ -168,7 +168,7 @@
      <h4><?php echo e(__('Time to prepare')); ?>: <?php echo e($order->time_to_prepare ." " .__('minutes')); ?></h4>
      <br/>
      <?php endif; ?>
-     <h5><?php echo e(__("Tips")); ?>: €<?php echo e($tips_total = round(($order->tips/100) * $order->order_price,2)); ?></h5>
+     
      <h5><?php echo e(__("NET")); ?>: <?php echo money($order->order_price-$order->restorant->vat, $currency ,true); ?></h5>
      <!-- <h5><?php echo e(__("VAT")); ?>: <?php echo money($order->vatvalue, $currency,$convert); ?></h5> -->
      <h5><?php echo e(__("VAT")); ?>: <?php echo e($vat_total = round(($order->restorant->vat/100) * $order->order_price,2)); ?></h5>
@@ -181,7 +181,10 @@
         <h4><?php echo e(__("Coupon code")); ?>: <?php echo e($order->coupon); ?></h4>
      <?php endif; ?>
      <hr />
-     <h3><?php echo e(__("TOTAL")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$tips_total+$vat_total, $currency,true); ?></h3>
+     <h5><?php echo e(__("Tips")); ?>:  <?php echo money(($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true); ?>  </h5>
+
+     <h3><?php echo e(__("TOTAL")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true); ?></h3>
+     <h3><?php echo e(__("GRAND TOTAL")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total+($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true); ?></h3>
      <hr />
      <h4><?php echo e(__("Payment method")); ?>: <?php echo e(__(strtoupper($order->payment_method))); ?></h4>
      <h4><?php echo e(__("Payment status")); ?>: <?php echo e(__(ucfirst($order->payment_status))); ?></h4>
