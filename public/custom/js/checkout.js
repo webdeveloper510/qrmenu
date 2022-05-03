@@ -140,6 +140,7 @@ $("#custom_tip").change(function() {
 
 
 $(document).on('focus','.tips-input1',function(){
+
     var tip_val = $(this).val();
     var tip_val1=$('.tips-input1').val();
 
@@ -158,10 +159,13 @@ $(document).on('focus','.tips-input1',function(){
 
         }
         else{
+
             $('.tips-input').removeClass('highlight');
             //$(this).addClass('highlight');
             $('#checkoutCustomTipsField').val(1);
             var tip_val = $('.tips-input1').val();
+
+
             var total_ori = $('.ammount1 strong').html();
             var currency = total_ori.replace(/[\d\., ]/g, '');
             var total = total_ori.replace(currency, '');
@@ -171,8 +175,19 @@ $(document).on('focus','.tips-input1',function(){
             var fn_tot= parseFloat(tip_cal)+parseFloat(total);
             fn_tot= fn_tot.toFixed(2);
 
-            $('.grand_amt strong').html(currency+fn_tot);
-            $('.tip_amt strong').html(currency+tip_cal);
+
+            var tip_val1=$('.tips-input highlight').val();
+             
+            if(tip_val1==undefined){
+                 
+                $('.grand_amt strong').html(currency+total);
+                $('.tip_amt strong').html(currency+0);
+            }
+            else{
+                $('.grand_amt strong').html(currency+fn_tot);
+                $('.tip_amt strong').html(currency+tip_cal);
+            }
+            
         }
     }
 });
@@ -243,7 +258,7 @@ $(document).on("click",".tips-input",function() {
             //$('.tips-input').removeClass('highlight');
             $('#checkoutCustomTipsField').val(1);
             $(this).addClass('highlight');
- $('.tips-input1').val(0);
+            $('.tips-input1').val(0);
             tip_val = tip_val.replace('%', '');
             tip_val = $.trim(tip_val);
             $(document.body).find('#checkoutTipsField').val(tip_val);
