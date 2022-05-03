@@ -146,7 +146,7 @@ class BaseOrderRepository extends Controller
             $this->order->payment_status="unpaid";
             $this->order->tips=$this->request->tips;
             
-            //$this->order->checkout_phone_field=$this->request->checkout_phone_field;
+            $this->order->custom_tip=$this->request->custom_tip;
             $this->order->checkout_phone_field=$this->request->checkout_phone;
             $this->order->checkout_customer_email_field=$this->request->checkout_customer_email_field;
             $comment=$this->request->comment;
@@ -177,6 +177,8 @@ class BaseOrderRepository extends Controller
             $delivery_method= $this->request->delivery_method;
            
             $tips = $this->request->tips;
+
+            $custom_tip = $this->request->custom_tip;
             
             
 
@@ -188,7 +190,13 @@ class BaseOrderRepository extends Controller
             
             $total = $subtotal + $vatcal; 
 
-            $tips_cal= ($tips/100)*$total;
+            if($custom_tip==0){
+                $tips_cal= ($tips/100)*$total;
+            }
+            else{
+                $tips_cal= $tips;
+            }
+            
 
 
 
@@ -222,6 +230,8 @@ echo "<pre>";*/
             'net_cal'            =>$netcal,
             'payment_method'     =>$last_order[0]->payment_method,
             'payment_status'     =>$last_order[0]->payment_status,
+            'checkout_customer_email_field'     =>$last_order[0]->checkout_customer_email_field,
+            'checkout_phone_field'     =>$last_order[0]->checkout_phone_field,
             'restorent_name'     =>$restorant[0]->name,
             'restorent_address'  =>$restorant[0]->address,
             'restorent_phone'    =>$restorant[0]->phone,
@@ -242,9 +252,10 @@ echo "<pre>";*/
            
         ];
        
-       
-        Mail::send('email.email',$test,function($message) use($test,$email){
-                    $message->to($email);
+       $subject = "Your Order #".$last_order[0]->id;
+        Mail::send('email.email',$test,function($message) use($test,$email,$subject){
+                    $message->to($email)->subject($subject);
+                    
         });
 
             $this->order->md=md5($this->order->id);

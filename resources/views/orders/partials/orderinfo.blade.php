@@ -5,8 +5,10 @@
      <div class="pl-lg-4">
          <h3>{{ $order->restorant->name }}</h3>
          <h4>{{ $order->restorant->address }}</h4>
-         <h4>{{ $order->restorant->phone }}</h4>
-         <h4>{{ $order->restorant->user->name.", ".$order->restorant->user->email }}</h4>
+         <h4 style="margin-bottom: 30px;">{{ $order->restorant->phone }}</h4>
+         <!-- <h4>{{ $order->restorant->user->name.", ".$order->restorant->user->email }}</h4> -->
+         <h4>{{ $order->restorant->user->name.", ".$order->checkout_customer_email_field }}</h4>
+         <h4>{{ $order->checkout_phone_field }}</h4>
      </div>
      <hr class="my-4" />
  
@@ -70,19 +72,19 @@
                //   echo "<pre>";print_r($item->toArray()); die;
              ?>
             @if ( $item->pivot->qty>0)
-            <li><h4>{{ $item->pivot->qty." X ".$item->name }} -  @money($theItemPrice, $currency,$convert)  =  ( @money( $item->pivot->qty*$theItemPrice, $currency,true) )
+            <li><h4>{{ $item->pivot->qty." X ".$item->name }}
              
                <!--  @if($item->pivot->vatvalue>0))
                     <span class="small">-- {{ __('VAT ').$item->pivot->vat."%: "}} ( @money( $item->pivot->vatvalue, $currency,$convert) )</span>
                 @endif -->
                 
-                @if($order->restorant->vat>0))
-                <span class="small">-- {{ __('VAT ').$order->restorant->vat."%: "}} ( @money( $order->restorant->vat, $currency,$convert) )</span>
+                @if($order->restorant->vat>0)
+                <!-- <span class="small">-- {{ __('VAT ').$order->restorant->vat."%: "}} ( @money( $order->restorant->vat, $currency,$convert) )</span> -->
                 @endif
                  @hasrole('admin|owner|staff')
                     <?php $lasStatusId=$order->status->pluck('id')->last(); ?>
                     @if ($lasStatusId!=7&&$lasStatusId!=11)
-                        <span class="small">
+                        <!-- <span class="small">
                             <button 
                             data-toggle="modal" 
                             data-target="#modal-order-item-count" 
@@ -93,10 +95,10 @@
                                     <i class="ni ni-ruler-pencil"></i>
                                 </span>
                             </button>
-                        </span>
+                        </span> -->
                     @endif
                  @endif
-                 <span>@if ( $order['tips']>0)Tips: {{$order['tips']}}%@endif</span>
+                 <!-- <span>@if ( $order['tips']>0)Tips: {{$order['tips']}}%@endif</span> -->
                   <p>{{ $item->pivot->item_comment }}</p>   
              </h4>
                  @if (strlen($item->pivot->variant_name)>2)
@@ -168,10 +170,12 @@
      <br/>
      @endif
      
+     <h4>{{ __("Sub Total") }}: @money( $order->order_price, $currency,$convert) </h4>
      <h5>{{ __("NET") }}: @money( $order->order_price-$order->restorant->vat, $currency ,true)</h5>
      <!-- <h5>{{ __("VAT") }}: @money( $order->vatvalue, $currency,$convert)</h5> -->
      <h5>{{ __("VAT") }}: {{ $vat_total = round(($order->restorant->vat/100) * $order->order_price,2)}}</h5>
-     <h4>{{ __("Sub Total") }}: @money( $order->order_price, $currency,$convert) </h4>
+     <h3>{{ __("TOTAL") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true)</h3>
+
      @if($order->delivery_method==1)
      <h4>{{ __("Delivery") }}: @money( $order->delivery_price, $currency,$convert)</h4>
      @endif
@@ -180,10 +184,14 @@
         <h4>{{ __("Coupon code") }}: {{$order->coupon}}</h4>
      @endif
      <hr />
+    @if($order->custom_tip==0)
      <h5>{{ __("Tips") }}:  @money(($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true)  </h5>
-
-     <h3>{{ __("TOTAL") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true)</h3>
      <h3>{{ __("GRAND TOTAL") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total+($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true)</h3>
+    @else
+        <h5>{{ __("Tips") }}:  @money($order->tips, $currency,true)  </h5>
+        <h3>{{ __("GRAND TOTAL") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total+$order->tips, $currency,true)</h3>
+    @endif
+     
      <hr />
      <h4>{{ __("Payment method") }}: {{ __(strtoupper($order->payment_method)) }}</h4>
      <h4>{{ __("Payment status") }}: {{ __(ucfirst($order->payment_status)) }}</h4>

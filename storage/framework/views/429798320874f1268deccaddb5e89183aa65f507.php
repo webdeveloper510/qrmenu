@@ -101,6 +101,7 @@
                       <input type="hidden" name="checkout_customer_email" id="checkoutPayField">
                       <input type="hidden" name="checkout_phone" id="checkoutPayPhoneField">
                       <input type="hidden" name="tips" id="checkoutTipsField">
+                      <input type="hidden" name="custom_tip" id="checkoutCustomTipsField">
                       <input type="hidden" name="subtotal" id="checkoutSubtotal">
                       <!-- Comment -->
                       <?php echo $__env->make('cart.comment', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
@@ -122,6 +123,7 @@
                         <input type="hidden" name="checkout_customer_email" id="checkoutPayField">
                         <input type="hidden" name="checkout_phone" id="checkoutPayPhoneField">
                         <input type="hidden" name="tips" id="checkoutTipsField">
+                        <input type="hidden" name="custom_tip" id="checkoutCustomTipsField">
                         <input type="hidden" name="subtotal" id="checkoutSubtotal">
                         <!-- Delivery adress -->
                         <?php echo $__env->make('cart.newaddress', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

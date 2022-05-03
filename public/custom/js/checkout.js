@@ -111,6 +111,9 @@ $("#phone").change(function() {
     $(document.body).find('#checkoutPayPhoneField').val($(document.body).find('#phone').val());
    
 });
+$("#custom_tip").change(function() {
+    $(document.body).find('#checkoutCustomTipsField').val($(document.body).find('#custom_tip').val());
+});
 
 
     $('.tip_amt strong').html('0');
@@ -151,16 +154,19 @@ $(document).on('focus','.tips-input1',function(){
         $(this).removeClass('highlight');
         if($('.tips-input1').val()!=""){
             $('.tips-input').removeClass('highlight');
+            $('#checkoutCustomTipsField').val(1);
 
         }
         else{
             $('.tips-input').removeClass('highlight');
             //$(this).addClass('highlight');
+            $('#checkoutCustomTipsField').val(1);
             var tip_val = $('.tips-input1').val();
             var total_ori = $('.ammount1 strong').html();
             var currency = total_ori.replace(/[\d\., ]/g, '');
             var total = total_ori.replace(currency, '');
-            var tip_cal =  (tip_val * total / 100).toFixed(2);
+            //var tip_cal =  (tip_val * total / 100).toFixed(2);
+            var tip_cal =  tip_val;
             
             var fn_tot= parseFloat(tip_cal)+parseFloat(total);
             fn_tot= fn_tot.toFixed(2);
@@ -191,10 +197,12 @@ $(document).on('keyup','.tips-input1',function(){
     
             
             var tip_val = $('.tips-input1').val();
+            $('#checkoutCustomTipsField').val(1);
             var total_ori = $('.ammount1 strong').html();
             var currency = total_ori.replace(/[\d\., ]/g, '');
             var total = total_ori.replace(currency, '');
-            var tip_cal =  (tip_val * total / 100).toFixed(2);
+           // var tip_cal =  (tip_val * total / 100).toFixed(2);
+            var tip_cal =  tip_val;
             
             var fn_tot= parseFloat(tip_cal)+parseFloat(total);
              fn_tot= fn_tot.toFixed(2);
@@ -204,6 +212,7 @@ $(document).on('keyup','.tips-input1',function(){
         
         }
         else{
+            $('#checkoutCustomTipsField').val(0);
             $('.tips-input').removeClass('highlight');
             //$(this).addClass('highlight');
 
@@ -230,10 +239,40 @@ $(document).on("click",".tips-input",function() {
     else
     {
         $(this).removeClass('highlight');
-        if($('.tips-input1').val()!=""){
-            $('.tips-input').removeClass('highlight');
+        if($('.tips-input1').val()>0){
+            //$('.tips-input').removeClass('highlight');
+            $('#checkoutCustomTipsField').val(1);
+            $(this).addClass('highlight');
+ $('.tips-input1').val(0);
+            tip_val = tip_val.replace('%', '');
+            tip_val = $.trim(tip_val);
+            $(document.body).find('#checkoutTipsField').val(tip_val);
+            var sub_total_ori = $('.ammount_sub strong').html();
+            var currency = sub_total_ori.replace(/[\d\., ]/g, '');
+            var sub_total = sub_total_ori.replace(currency, '');
+
+            var total_ori = $('.ammount1 strong').html();
+            var currency_total = total_ori.replace(/[\d\., ]/g, '');
+            var total = total_ori.replace(currency_total, '');
+            
+            var tax_ammount = $('#tax_hidden').val();
+            tax_ammount = tax_ammount.replace(currency, '');
+            tax_ammount =  (tax_ammount * sub_total / 100).toFixed(2);
+            $('.tax_ammount strong').html(currency+tax_ammount);
+
+            var tip_cal =  (tip_val * total / 100).toFixed(2);
+
+            var fn_tot= parseFloat(sub_total)+parseFloat(tax_ammount);
+             fn_tot= fn_tot.toFixed(2);
+            $('.ammount1 strong').html(currency+fn_tot);
+            $('.tip_amt strong').html(currency+tip_cal);
+
+            var grand_tot= parseFloat(total)+parseFloat(tip_cal);
+             grand_tot= grand_tot.toFixed(2);
+            $('.grand_amt strong').html(currency+grand_tot);
         }
         else{
+            $('#checkoutCustomTipsField').val(0);
             $('.tips-input').removeClass('highlight');
             $(this).addClass('highlight');
 
@@ -263,7 +302,82 @@ $(document).on("click",".tips-input",function() {
             var grand_tot= parseFloat(total)+parseFloat(tip_cal);
              grand_tot= grand_tot.toFixed(2);
             $('.grand_amt strong').html(currency+grand_tot);
+
+        /*$(this).removeClass('highlight');
+        if($('.tips-input1').val()!=""){
+            $('.tips-input').removeClass('highlight');
+            $('#checkoutCustomTipsField').val(1);
         }
+        else{
+            $('#checkoutCustomTipsField').val(0);
+            $('.tips-input').removeClass('highlight');
+            $(this).addClass('highlight');
+
+            tip_val = tip_val.replace('%', '');
+            tip_val = $.trim(tip_val);
+            $(document.body).find('#checkoutTipsField').val(tip_val);
+            var sub_total_ori = $('.ammount_sub strong').html();
+            var currency = sub_total_ori.replace(/[\d\., ]/g, '');
+            var sub_total = sub_total_ori.replace(currency, '');
+
+            var total_ori = $('.ammount1 strong').html();
+            var currency_total = total_ori.replace(/[\d\., ]/g, '');
+            var total = total_ori.replace(currency_total, '');
+            
+            var tax_ammount = $('#tax_hidden').val();
+            tax_ammount = tax_ammount.replace(currency, '');
+            tax_ammount =  (tax_ammount * sub_total / 100).toFixed(2);
+            $('.tax_ammount strong').html(currency+tax_ammount);
+
+            var tip_cal =  (tip_val * total / 100).toFixed(2);
+
+            var fn_tot= parseFloat(sub_total)+parseFloat(tax_ammount);
+             fn_tot= fn_tot.toFixed(2);
+            $('.ammount1 strong').html(currency+fn_tot);
+            $('.tip_amt strong').html(currency+tip_cal);
+
+            var grand_tot= parseFloat(total)+parseFloat(tip_cal);
+             grand_tot= grand_tot.toFixed(2);
+            $('.grand_amt strong').html(currency+grand_tot);*/
+        }
+        /*$(this).removeClass('highlight');
+        if($('.tips-input1').val()!=""){
+            $('.tips-input').removeClass('highlight');
+            $('#checkoutCustomTipsField').val(1);
+        }
+        else{
+            $('#checkoutCustomTipsField').val(0);
+            $('.tips-input').removeClass('highlight');
+            $(this).addClass('highlight');
+
+            tip_val = tip_val.replace('%', '');
+            tip_val = $.trim(tip_val);
+            $(document.body).find('#checkoutTipsField').val(tip_val);
+            var sub_total_ori = $('.ammount_sub strong').html();
+            var currency = sub_total_ori.replace(/[\d\., ]/g, '');
+            var sub_total = sub_total_ori.replace(currency, '');
+
+            var total_ori = $('.ammount1 strong').html();
+            var currency_total = total_ori.replace(/[\d\., ]/g, '');
+            var total = total_ori.replace(currency_total, '');
+            
+            var tax_ammount = $('#tax_hidden').val();
+            tax_ammount = tax_ammount.replace(currency, '');
+            tax_ammount =  (tax_ammount * sub_total / 100).toFixed(2);
+            $('.tax_ammount strong').html(currency+tax_ammount);
+
+            var tip_cal =  (tip_val * total / 100).toFixed(2);
+
+            var fn_tot= parseFloat(sub_total)+parseFloat(tax_ammount);
+             fn_tot= fn_tot.toFixed(2);
+            $('.ammount1 strong').html(currency+fn_tot);
+            $('.tip_amt strong').html(currency+tip_cal);
+
+            var grand_tot= parseFloat(total)+parseFloat(tip_cal);
+             grand_tot= grand_tot.toFixed(2);
+            $('.grand_amt strong').html(currency+grand_tot);
+        }*/
+
     }
    
          

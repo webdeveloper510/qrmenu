@@ -152,7 +152,7 @@ class OrderController extends Controller
                     'restaurant_fee'=>$order->fee,
                     'restaurant_static_fee'=>$order->static_fee,
                     'vat'=>$order->vatvalue,
-                    //'tips'=>1,
+                    
                   ];
                 array_push($items, $item);
             }
@@ -185,7 +185,7 @@ class OrderController extends Controller
     
 
     private function toMobileLike(Request $request){
-        //dd($request->all());
+        //dd($request->all());die;
         //Find vendor id
         $vendor_id = null;
         foreach (Cart::getContent() as $key => $item) {
@@ -292,7 +292,12 @@ class OrderController extends Controller
              $checkout_subtotal_field=$request->checkout_subtotal_field;
         // }
 
-
+        //checkoutCustomTipsField 
+        $custom_tip=null;
+        if($request->has('custom_tip')){
+            $custom_tip=$request->custom_tip;
+        }
+             
          
 
         //Delivery area
@@ -322,7 +327,7 @@ class OrderController extends Controller
             "deliveryAreaId"=> $deliveryAreaId,
             "coupon_code"=> $request->has('coupon_code')&&strlen($request->coupon_code)>3?$request->coupon_code:null,
             "tips"=> $tips,
-            //"checkout_phone_field"=> $checkout_phone_field,
+            "custom_tip"=> $custom_tip,
             "checkout_customer_email_field"=> $checkout_customer_email_field,
             "checkout_phone"=> $checkout_phone,
             "checkout_subtotal_field"=> $checkout_subtotal_field,

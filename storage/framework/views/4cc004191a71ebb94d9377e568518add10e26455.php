@@ -5,8 +5,10 @@
      <div class="pl-lg-4">
          <h3><?php echo e($order->restorant->name); ?></h3>
          <h4><?php echo e($order->restorant->address); ?></h4>
-         <h4><?php echo e($order->restorant->phone); ?></h4>
-         <h4><?php echo e($order->restorant->user->name.", ".$order->restorant->user->email); ?></h4>
+         <h4 style="margin-bottom: 30px;"><?php echo e($order->restorant->phone); ?></h4>
+         <!-- <h4><?php echo e($order->restorant->user->name.", ".$order->restorant->user->email); ?></h4> -->
+         <h4><?php echo e($order->restorant->user->name.", ".$order->checkout_customer_email_field); ?></h4>
+         <h4><?php echo e($order->checkout_phone_field); ?></h4>
      </div>
      <hr class="my-4" />
  
@@ -70,19 +72,20 @@
                //   echo "<pre>";print_r($item->toArray()); die;
              ?>
             <?php if( $item->pivot->qty>0): ?>
-            <li><h4><?php echo e($item->pivot->qty." X ".$item->name); ?> -  <?php echo money($theItemPrice, $currency,$convert); ?>  =  ( <?php echo money($item->pivot->qty*$theItemPrice, $currency,true); ?> )
+            <li><h4><?php echo e($item->pivot->qty." X ".$item->name); ?>
+
              
                <!--  <?php if($item->pivot->vatvalue>0): ?>)
                     <span class="small">-- <?php echo e(__('VAT ').$item->pivot->vat."%: "); ?> ( <?php echo money($item->pivot->vatvalue, $currency,$convert); ?> )</span>
                 <?php endif; ?> -->
                 
-                <?php if($order->restorant->vat>0): ?>)
-                <span class="small">-- <?php echo e(__('VAT ').$order->restorant->vat."%: "); ?> ( <?php echo money($order->restorant->vat, $currency,$convert); ?> )</span>
+                <?php if($order->restorant->vat>0): ?>
+                <!-- <span class="small">-- <?php echo e(__('VAT ').$order->restorant->vat."%: "); ?> ( <?php echo money($order->restorant->vat, $currency,$convert); ?> )</span> -->
                 <?php endif; ?>
                  <?php if(auth()->check() && auth()->user()->hasRole('admin|owner|staff')): ?>
                     <?php $lasStatusId=$order->status->pluck('id')->last(); ?>
                     <?php if($lasStatusId!=7&&$lasStatusId!=11): ?>
-                        <span class="small">
+                        <!-- <span class="small">
                             <button 
                             data-toggle="modal" 
                             data-target="#modal-order-item-count" 
@@ -93,10 +96,10 @@
                                     <i class="ni ni-ruler-pencil"></i>
                                 </span>
                             </button>
-                        </span>
+                        </span> -->
                     <?php endif; ?>
                  <?php endif; ?>
-                 <span><?php if( $order['tips']>0): ?>Tips: <?php echo e($order['tips']); ?>%<?php endif; ?></span>
+                 <!-- <span><?php if( $order['tips']>0): ?>Tips: <?php echo e($order['tips']); ?>%<?php endif; ?></span> -->
                   <p><?php echo e($item->pivot->item_comment); ?></p>   
              </h4>
                  <?php if(strlen($item->pivot->variant_name)>2): ?>
@@ -169,10 +172,12 @@
      <br/>
      <?php endif; ?>
      
+     <h4><?php echo e(__("Sub Total")); ?>: <?php echo money($order->order_price, $currency,$convert); ?> </h4>
      <h5><?php echo e(__("NET")); ?>: <?php echo money($order->order_price-$order->restorant->vat, $currency ,true); ?></h5>
      <!-- <h5><?php echo e(__("VAT")); ?>: <?php echo money($order->vatvalue, $currency,$convert); ?></h5> -->
      <h5><?php echo e(__("VAT")); ?>: <?php echo e($vat_total = round(($order->restorant->vat/100) * $order->order_price,2)); ?></h5>
-     <h4><?php echo e(__("Sub Total")); ?>: <?php echo money($order->order_price, $currency,$convert); ?> </h4>
+     <h3><?php echo e(__("TOTAL")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true); ?></h3>
+
      <?php if($order->delivery_method==1): ?>
      <h4><?php echo e(__("Delivery")); ?>: <?php echo money($order->delivery_price, $currency,$convert); ?></h4>
      <?php endif; ?>
@@ -181,10 +186,14 @@
         <h4><?php echo e(__("Coupon code")); ?>: <?php echo e($order->coupon); ?></h4>
      <?php endif; ?>
      <hr />
+    <?php if($order->custom_tip==0): ?>
      <h5><?php echo e(__("Tips")); ?>:  <?php echo money(($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true); ?>  </h5>
-
-     <h3><?php echo e(__("TOTAL")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true); ?></h3>
      <h3><?php echo e(__("GRAND TOTAL")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total+($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true); ?></h3>
+    <?php else: ?>
+        <h5><?php echo e(__("Tips")); ?>:  <?php echo money($order->tips, $currency,true); ?>  </h5>
+        <h3><?php echo e(__("GRAND TOTAL")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total+$order->tips, $currency,true); ?></h3>
+    <?php endif; ?>
+     
      <hr />
      <h4><?php echo e(__("Payment method")); ?>: <?php echo e(__(strtoupper($order->payment_method))); ?></h4>
      <h4><?php echo e(__("Payment status")); ?>: <?php echo e(__(ucfirst($order->payment_status))); ?></h4>

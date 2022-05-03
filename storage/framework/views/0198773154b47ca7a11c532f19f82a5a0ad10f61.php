@@ -14,7 +14,7 @@
                         <small class="text-muted"><i class="fas fa-clock mr-1"></i><?php echo e($stakeholder->pivot->created_at->locale(Config::get('app.locale'))->isoFormat('LLLL')); ?></small>
                     </div>
                 </div>
-                <h6 class="text-sm mt-1 mb-0"><?php echo e(__('Status from')); ?>: <?php echo e($stakeholder->name); ?></h6>
+                <!-- <h6 class="text-sm mt-1 mb-0"><?php echo e(__('Status from')); ?>: <?php echo e($stakeholder->name); ?></h6> -->
             </div>
         </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

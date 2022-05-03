@@ -91,6 +91,7 @@
                       <input type="hidden" name="checkout_customer_email" id="checkoutPayField">
                       <input type="hidden" name="checkout_phone" id="checkoutPayPhoneField">
                       <input type="hidden" name="tips" id="checkoutTipsField">
+                      <input type="hidden" name="custom_tip" id="checkoutCustomTipsField">
                       <input type="hidden" name="subtotal" id="checkoutSubtotal">
                       <!-- Comment -->
                       @include('cart.comment')
@@ -112,6 +113,7 @@
                         <input type="hidden" name="checkout_customer_email" id="checkoutPayField">
                         <input type="hidden" name="checkout_phone" id="checkoutPayPhoneField">
                         <input type="hidden" name="tips" id="checkoutTipsField">
+                        <input type="hidden" name="custom_tip" id="checkoutCustomTipsField">
                         <input type="hidden" name="subtotal" id="checkoutSubtotal">
                         <!-- Delivery adress -->
                         @include('cart.newaddress')

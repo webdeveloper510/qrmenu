@@ -42,12 +42,7 @@
                                     <?php if($custom_tip==1): ?>
 
                                       <br><input type="number" name="tips" class="tips-input1" id="tips" min="0">$<br>  
-                                    <!-- <div class="tips-radio mb-3"> 
-                                      <input name="tips" class="tips-input1" id="tips" type="radio" value="">
-                                      <label class="tips-label"><?php echo e(__('Custom $')); ?></label>
-                                      
-                                    </div> 
-                                    <input type="number" class="tips_input1" id="tips_input1" name="tips" > -->
+                                      <input type="hidden" name="custom_tip" id="custom_tip" value="">
                                     <?php endif; ?>
                             
                                     <br>
@@ -77,7 +72,7 @@
                            
 
                         <!-- <span>{{totalPriceFormat}} </span> -->
-                            <span v-if="totalPrice"><strong><?php echo e(__('TOTAL')); ?>:</strong></span>
+                            <span v-if="totalPrice"><strong><?php echo e(__('Total')); ?>:</strong></span>
                             <span v-if="totalPrice" class="ammount1"><strong>{{ withDeliveryFormat }}
 
                             </strong></span>
