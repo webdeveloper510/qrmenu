@@ -191,7 +191,7 @@ class BaseOrderRepository extends Controller
             $total = $subtotal + $vatcal; 
 
             if($custom_tip==0){
-                $tips_cal= ($tips/100)*$total;
+                $tips_cal= ($tips/100)*$subtotal;
             }
             else{
                 $tips_cal= $tips;

@@ -170,11 +170,11 @@
      <br/>
      @endif
      
-     <h4>{{ __("Sub Total") }}: @money( $order->order_price, $currency,$convert) </h4>
-     <h5>{{ __("NET") }}: @money( $order->order_price-$order->restorant->vat, $currency ,true)</h5>
+     <h4>{{ __("Subtotal") }}: @money( $order->order_price, $currency,$convert) </h4>
+     <!-- <h5>{{ __("NET") }}: @money( $order->order_price-$order->restorant->vat, $currency ,true)</h5> -->
      <!-- <h5>{{ __("VAT") }}: @money( $order->vatvalue, $currency,$convert)</h5> -->
-     <h5>{{ __("VAT") }}: {{ $vat_total = round(($order->restorant->vat/100) * $order->order_price,2)}}</h5>
-     <h3>{{ __("TOTAL") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true)</h3>
+     <h5>{{ __("Tax") }}: {{ $vat_total = round(($order->restorant->vat/100) * $order->order_price,2)}}</h5>
+     <h3>{{ __("Total") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true)</h3>
 
      @if($order->delivery_method==1)
      <h4>{{ __("Delivery") }}: @money( $order->delivery_price, $currency,$convert)</h4>
@@ -185,11 +185,11 @@
      @endif
      <hr />
     @if($order->custom_tip==0)
-     <h5>{{ __("Tips") }}:  @money(($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true)  </h5>
-     <h3>{{ __("GRAND TOTAL") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total+($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true)</h3>
+     <h5>{{ __("Tips") }}:  @money(($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount), $currency,true)  </h5>
+     <h3>{{ __("Grand Total") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total+($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount), $currency,true)</h3>
     @else
         <h5>{{ __("Tips") }}:  @money($order->tips, $currency,true)  </h5>
-        <h3>{{ __("GRAND TOTAL") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total+$order->tips, $currency,true)</h3>
+        <h3>{{ __("Grand Total") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total+$order->tips, $currency,true)</h3>
     @endif
      
      <hr />

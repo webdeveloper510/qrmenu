@@ -172,11 +172,11 @@
      <br/>
      <?php endif; ?>
      
-     <h4><?php echo e(__("Sub Total")); ?>: <?php echo money($order->order_price, $currency,$convert); ?> </h4>
-     <h5><?php echo e(__("NET")); ?>: <?php echo money($order->order_price-$order->restorant->vat, $currency ,true); ?></h5>
+     <h4><?php echo e(__("Subtotal")); ?>: <?php echo money($order->order_price, $currency,$convert); ?> </h4>
+     <!-- <h5><?php echo e(__("NET")); ?>: <?php echo money($order->order_price-$order->restorant->vat, $currency ,true); ?></h5> -->
      <!-- <h5><?php echo e(__("VAT")); ?>: <?php echo money($order->vatvalue, $currency,$convert); ?></h5> -->
-     <h5><?php echo e(__("VAT")); ?>: <?php echo e($vat_total = round(($order->restorant->vat/100) * $order->order_price,2)); ?></h5>
-     <h3><?php echo e(__("TOTAL")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true); ?></h3>
+     <h5><?php echo e(__("Tax")); ?>: <?php echo e($vat_total = round(($order->restorant->vat/100) * $order->order_price,2)); ?></h5>
+     <h3><?php echo e(__("Total")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true); ?></h3>
 
      <?php if($order->delivery_method==1): ?>
      <h4><?php echo e(__("Delivery")); ?>: <?php echo money($order->delivery_price, $currency,$convert); ?></h4>
@@ -187,11 +187,11 @@
      <?php endif; ?>
      <hr />
     <?php if($order->custom_tip==0): ?>
-     <h5><?php echo e(__("Tips")); ?>:  <?php echo money(($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true); ?>  </h5>
-     <h3><?php echo e(__("GRAND TOTAL")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total+($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount+$vat_total), $currency,true); ?></h3>
+     <h5><?php echo e(__("Tips")); ?>:  <?php echo money(($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount), $currency,true); ?>  </h5>
+     <h3><?php echo e(__("Grand Total")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total+($order->tips/100) * ($order->delivery_price+$order->order_price_with_discount), $currency,true); ?></h3>
     <?php else: ?>
         <h5><?php echo e(__("Tips")); ?>:  <?php echo money($order->tips, $currency,true); ?>  </h5>
-        <h3><?php echo e(__("GRAND TOTAL")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total+$order->tips, $currency,true); ?></h3>
+        <h3><?php echo e(__("Grand Total")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total+$order->tips, $currency,true); ?></h3>
     <?php endif; ?>
      
      <hr />

@@ -82,15 +82,15 @@
         <h4 style="margin-bottom: 0.5rem;font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d; font-size: 1.5rem; margin: 0; padding-left: 20px;">Comment:  {{$comment}}</h4>
                <br>
 
-    <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5; color: #32325d;font-size: 20px; padding-left: 20px;margin: 0;">Sub Total: @money((round($subtotal,2)), $currency,true) </h4>
+    <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5; color: #32325d;font-size: 20px; padding-left: 20px;margin: 0;">Subtotal: @money((round($subtotal,2)), $currency,true) </h4>
 
-    <h5 style="font-family: inherit; font-weight: 400;line-height: 1.5; color: #32325d;font-size: 20px; padding-left: 20px;margin: 0;">NET: @money((round($net_cal,2)), $currency,true)</h5>
+    <!-- <h5 style="font-family: inherit; font-weight: 400;line-height: 1.5; color: #32325d;font-size: 20px; padding-left: 20px;margin: 0;">NET: @money((round($net_cal,2)), $currency,true)</h5> -->
      
-    <h5 style="font-family: inherit; font-weight: 400;line-height: 1.5; color: #32325d;font-size: 20px; padding-left: 20px;margin: 0;">VAT: @money((round($vat_cal,2)), $currency,true)</h5>
+    <h5 style="font-family: inherit; font-weight: 400;line-height: 1.5; color: #32325d;font-size: 20px; padding-left: 20px;margin: 0;">Tax: @money((round($vat_cal,2)), $currency,true)</h5>
 
      
 
-    <h3 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 22px;padding-left: 20px;margin: 0;">TOTAL: @money(round($delivery_price+$subtotal+$discount+$vat_cal,2) , $currency,true)</h3>
+    <h3 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 22px;padding-left: 20px;margin: 0;">Total: @money(round($delivery_price+$subtotal+$discount+$vat_cal,2) , $currency,true)</h3>
 
                <hr style="margin: 20px;"/>
 
@@ -100,7 +100,7 @@
 
      <h5 style="font-family: inherit; font-weight: 400;line-height: 1.5; color: #32325d;font-size: 20px; padding-left: 20px;margin: 0;">Tips: @money($tips, $currency,true)</h5>
 
-     <h3 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 22px;padding-left: 20px;margin: 0;">GRAND TOTAL: @money(round($delivery_price+$subtotal+$discount+$tips+$vat_cal,2) , $currency,true)</h3>
+     <h3 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 22px;padding-left: 20px;margin: 0;">Grand Total: @money(round($delivery_price+$subtotal+$discount+$tips+$vat_cal,2) , $currency,true)</h3>
      <hr style="margin: 20px;"/>
 
      <h4 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 1.5rem;padding-left: 20px;margin: 0;">Payment method: {{__(ucfirst($payment_method))}}</h4>

@@ -275,7 +275,7 @@ $(document).on("click",".tips-input",function() {
             tax_ammount =  (tax_ammount * sub_total / 100).toFixed(2);
             $('.tax_ammount strong').html(currency+tax_ammount);
 
-            var tip_cal =  (tip_val * total / 100).toFixed(2);
+            var tip_cal =  (tip_val * sub_total / 100).toFixed(2);
 
             var fn_tot= parseFloat(sub_total)+parseFloat(tax_ammount);
              fn_tot= fn_tot.toFixed(2);
@@ -307,7 +307,7 @@ $(document).on("click",".tips-input",function() {
             tax_ammount =  (tax_ammount * sub_total / 100).toFixed(2);
             $('.tax_ammount strong').html(currency+tax_ammount);
 
-            var tip_cal =  (tip_val * total / 100).toFixed(2);
+            var tip_cal =  (tip_val * sub_total / 100).toFixed(2);
 
             var fn_tot= parseFloat(sub_total)+parseFloat(tax_ammount);
              fn_tot= fn_tot.toFixed(2);
