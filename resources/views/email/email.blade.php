@@ -40,7 +40,7 @@
          <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 25px;padding-left: 20px !important;margin: 0 !important;">{{$restorent_address}}</h4>
          <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 25px;padding-left: 20px !important;margin-bottom: 30px !important;margin-top: 0px !important;">{{$restorent_phone}}</h4>
 
-         <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 25px;padding-left: 20px !important;margin: 0 !important;">{{$username}}, {{$checkout_customer_email_field}}</h4>
+         <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 25px;padding-left: 20px !important;margin: 0 !important;">{{$checkout_customer_email_field}}</h4>
          <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 25px;padding-left: 20px !important;margin: 0 !important;">{{$checkout_phone_field}}</h4>
          
      </div>

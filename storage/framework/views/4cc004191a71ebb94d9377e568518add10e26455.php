@@ -7,7 +7,7 @@
          <h4><?php echo e($order->restorant->address); ?></h4>
          <h4 style="margin-bottom: 30px;"><?php echo e($order->restorant->phone); ?></h4>
          <!-- <h4><?php echo e($order->restorant->user->name.", ".$order->restorant->user->email); ?></h4> -->
-         <h4><?php echo e($order->restorant->user->name.", ".$order->checkout_customer_email_field); ?></h4>
+         <h4><?php echo e($order->checkout_customer_email_field); ?></h4>
          <h4><?php echo e($order->checkout_phone_field); ?></h4>
      </div>
      <hr class="my-4" />
