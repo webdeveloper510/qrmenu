@@ -92,7 +92,7 @@
 
     <h3 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 20px;padding-left: 20px;margin: 0;">Total: @money(round($delivery_price+$subtotal+$discount+$vat_cal,2) , $currency,true)</h3>
 
-               <hr style="margin: 20px;"/>
+               <hr style="margin: 20px;"/>  
 
     
 
