@@ -1,4 +1,9 @@
 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+
+
+
+
 
 <div class="card card-profile shadow mt--300">
     <div class="px-4">
@@ -41,7 +46,7 @@
                                     <!-- <br><input type="text" class="input-text" value=""><br> -->
                                     @if($custom_tip==1)
 
-                                      <br><input type="number" name="tips" class="tips-input1" id="tips" min="0">$<br>  
+                                      <br><input type="number" name="tips" class="tips-input1" id="tips" min="0" oninput="validity.valid||(value='');">$<br>  
                                       <input type="hidden" name="custom_tip" id="custom_tip" value="">
                                     @endif
                             
@@ -337,8 +342,8 @@ input#tips {
 
 
   </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+<script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script> 
 <script>
 /*  jQuery(document).ready(function(){
     
@@ -364,5 +369,9 @@ input#tips {
         $('.paymentbutton').attr("disabled", true);
     }  
 } */
+
+
+
+$("#phone").inputmask({"mask":"(999) 999-9999"});
 
 </script>

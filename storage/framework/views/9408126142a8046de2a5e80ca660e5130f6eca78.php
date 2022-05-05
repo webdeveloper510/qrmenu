@@ -36,12 +36,12 @@
 </div>                    <div class="card-body">
     <h6 class="heading-small text-muted mb-4" style="color: #8898aa!important; font-weight: 600!important; font-size: .875rem; padding: 1.5rem; margin: 5px !important;">Restaurant information</h6>
           <div class="pl-lg-4" style="padding-left: 1.5rem!important;">
-         <h3 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 25px;padding-left: 20px !important;margin: 0 !important;"><?php echo e($restorent_name); ?></h3>
-         <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 25px;padding-left: 20px !important;margin: 0 !important;"><?php echo e($restorent_address); ?></h4>
-         <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 25px;padding-left: 20px !important;margin-bottom: 30px !important;margin-top: 0px !important;"><?php echo e($restorent_phone); ?></h4>
+         <h3 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 20px;padding-left: 20px !important;margin: 0 !important;"><?php echo e($restorent_name); ?></h3>
+         <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 20px;padding-left: 20px !important;margin: 0 !important;"><?php echo e($restorent_address); ?></h4>
+         <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 20px;padding-left: 20px !important;margin-bottom: 30px !important;margin-top: 0px !important;"><?php echo e($restorent_phone); ?></h4>
 
-         <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 25px;padding-left: 20px !important;margin: 0 !important;"><?php echo e($username); ?>, <?php echo e($checkout_customer_email_field); ?></h4>
-         <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 25px;padding-left: 20px !important;margin: 0 !important;"><?php echo e($checkout_phone_field); ?></h4>
+         <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 20px;padding-left: 20px !important;margin: 0 !important;"><?php echo e($checkout_customer_email_field); ?></h4>
+         <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d;padding: 0 !important; font-size: 20px;padding-left: 20px !important;margin: 0 !important;"><?php echo e($checkout_phone_field); ?></h4>
          
      </div>
      <hr class="my-4" style="margin: 20px;"/>
@@ -49,8 +49,8 @@
                            <h6 class="heading-small text-muted mb-4" style="color: #8898aa!important; padding: 1.5rem; font-size: 16px; margin: 0;font-weight: 500; padding-bottom: 0 !important;">Table Information</h6>
              <div class="pl-lg-4">
                  
-                     <h3 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;padding: 1.5rem 1.5rem 0 50px !important;font-size: 25px;margin: 0 !important;">Table: <?php echo e($tablename); ?></h3>
-                                              <h4 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d; padding: 0 0 0 50px !important; font-size: 25px;margin: 0 !important;">Area: <?php echo e($restoarea_name); ?></h4>
+                     <h3 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;padding: 1.5rem 1.5rem 0 50px !important;font-size: 20px;margin: 0 !important;">Table: <?php echo e($tablename); ?></h3>
+                                              <h4 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d; padding: 0 0 0 50px !important; font-size: 20px;margin: 0 !important;">Area: <?php echo e($restoarea_name); ?></h4>
                                       
                  
              </div>
@@ -80,7 +80,7 @@
                          
               </ul>
                  
-        <h4 style="margin-bottom: 0.5rem;font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d; font-size: 1.5rem; margin: 0; padding-left: 20px;">Comment:  <?php echo e($comment); ?></h4>
+        <h4 style="margin-bottom: 0.5rem;font-family: inherit; font-weight: 400;line-height: 1.5;color: #32325d; font-size: 20px; margin: 0; padding-left: 20px;">Comment:  <?php echo e($comment); ?></h4>
                <br>
 
     <h4 style="font-family: inherit; font-weight: 400;line-height: 1.5; color: #32325d;font-size: 20px; padding-left: 20px;margin: 0;">Subtotal: <?php echo money((round($subtotal,2)), $currency,true); ?> </h4>
@@ -91,7 +91,7 @@
 
      
 
-    <h3 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 22px;padding-left: 20px;margin: 0;">Total: <?php echo money(round($delivery_price+$subtotal+$discount+$vat_cal,2) , $currency,true); ?></h3>
+    <h3 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 20px;padding-left: 20px;margin: 0;">Total: <?php echo money(round($delivery_price+$subtotal+$discount+$vat_cal,2) , $currency,true); ?></h3>
 
                <hr style="margin: 20px;"/>
 
@@ -101,15 +101,15 @@
 
      <h5 style="font-family: inherit; font-weight: 400;line-height: 1.5; color: #32325d;font-size: 20px; padding-left: 20px;margin: 0;">Tips: <?php echo money($tips, $currency,true); ?></h5>
 
-     <h3 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 22px;padding-left: 20px;margin: 0;">Grand Total: <?php echo money(round($delivery_price+$subtotal+$discount+$tips+$vat_cal,2) , $currency,true); ?></h3>
+     <h3 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 20px;padding-left: 20px;margin: 0;">Grand Total: <?php echo money(round($delivery_price+$subtotal+$discount+$tips+$vat_cal,2) , $currency,true); ?></h3>
      <hr style="margin: 20px;"/>
 
-     <h4 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 1.5rem;padding-left: 20px;margin: 0;">Payment method: <?php echo e(__(ucfirst($payment_method))); ?></h4>
+     <h4 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 20px;padding-left: 20px;margin: 0;">Payment method: <?php echo e(__(ucfirst($payment_method))); ?></h4>
 
-     <h4 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 1.5rem;padding-left: 20px;margin: 0;">Payment status: <?php echo e(__(ucfirst($payment_status))); ?></h4>
+     <h4 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 20px;padding-left: 20px;margin: 0;">Payment status: <?php echo e(__(ucfirst($payment_status))); ?></h4>
           <hr style="margin: 20px;"/>
 
-    <h4 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 1.5rem;padding-left: 20px;margin: 0; margin-bottom: 25px;">Dine method: <?php echo e(__(ucfirst($deliverymethod))); ?></h4>
+    <h4 style="font-family: inherit;font-weight: 400;line-height: 1.5;color: #32325d;font-size: 20px;padding-left: 20px;margin: 0; margin-bottom: 25px;">Dine method: <?php echo e(__(ucfirst($deliverymethod))); ?></h4>
               
      
      
