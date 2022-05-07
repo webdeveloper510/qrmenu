@@ -173,7 +173,9 @@
      <h4>{{ __("Subtotal") }}: @money( $order->order_price, $currency,$convert) </h4>
      <!-- <h5>{{ __("NET") }}: @money( $order->order_price-$order->restorant->vat, $currency ,true)</h5> -->
      <!-- <h5>{{ __("VAT") }}: @money( $order->vatvalue, $currency,$convert)</h5> -->
-     <h4>{{ __("Tax") }}: {{ $vat_total = round(($order->restorant->vat/100) * $order->order_price,2)}}</h4>
+     <!-- <h4>{{ __("Tax") }}: {{ $vat_total = round(($order->restorant->vat/100) * $order->order_price,2)}}</h4> -->
+     <?php $vat_total = round(($order->restorant->vat/100) * $order->order_price,2);?>
+     <h4>{{ __("Tax") }}:  @money(($order->restorant->vat/100) * $order->order_price,$currency,true)</h4>
      <h4>{{ __("Total") }}: @money( $order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true)</h4>
 
      @if($order->delivery_method==1)

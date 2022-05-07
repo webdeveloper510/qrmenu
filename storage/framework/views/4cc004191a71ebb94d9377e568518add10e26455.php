@@ -175,7 +175,9 @@
      <h4><?php echo e(__("Subtotal")); ?>: <?php echo money($order->order_price, $currency,$convert); ?> </h4>
      <!-- <h5><?php echo e(__("NET")); ?>: <?php echo money($order->order_price-$order->restorant->vat, $currency ,true); ?></h5> -->
      <!-- <h5><?php echo e(__("VAT")); ?>: <?php echo money($order->vatvalue, $currency,$convert); ?></h5> -->
-     <h4><?php echo e(__("Tax")); ?>: <?php echo e($vat_total = round(($order->restorant->vat/100) * $order->order_price,2)); ?></h4>
+     <!-- <h4><?php echo e(__("Tax")); ?>: <?php echo e($vat_total = round(($order->restorant->vat/100) * $order->order_price,2)); ?></h4> -->
+     <?php $vat_total = round(($order->restorant->vat/100) * $order->order_price,2);?>
+     <h4><?php echo e(__("Tax")); ?>:  <?php echo money(($order->restorant->vat/100) * $order->order_price,$currency,true); ?></h4>
      <h4><?php echo e(__("Total")); ?>: <?php echo money($order->delivery_price+$order->order_price_with_discount+$vat_total, $currency,true); ?></h4>
 
      <?php if($order->delivery_method==1): ?>

@@ -522,6 +522,7 @@ window.onload = function () {
                 variantID:variantID
               })
               .then(function (response) {
+                $('#item_comment').val('');
                   if(response.data.status){
                     $('#productModal').modal('hide');
                     //$('#productModal').modal('close');

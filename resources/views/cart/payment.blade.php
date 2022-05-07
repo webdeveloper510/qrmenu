@@ -45,8 +45,8 @@
                                     @endif
                                     <!-- <br><input type="text" class="input-text" value=""><br> -->
                                     @if($custom_tip==1)
-
-                                      <br><input type="number" name="tips" class="tips-input1" id="tips" min="0" oninput="validity.valid||(value='');">$<br>  
+                                      <br><label class="Custom-Tip"><strong>Custom Tip</strong></label>
+                                      <br><input type="number" name="tips" class="tips-input1" pattern="\d{3}" id="tips" min="0" max="999" maxlength="3" oninput="validity.valid||(value='');" step=".01">$<br>  
                                       <input type="hidden" name="custom_tip" id="custom_tip" value="">
                                     @endif
                             
@@ -276,11 +276,14 @@
     }
     input.tips-input1 {
         border: 2px solid #000000;
-        margin-top: 15px;
+        margin-top: 5px;
         width: 100px;
         padding: 10px;
         margin-bottom: 15px;
     }
+    label.Custom-Tip {
+    margin-top: 20px;
+}
     .highlight {
         background: #7082E7 !important;
         color: white;
