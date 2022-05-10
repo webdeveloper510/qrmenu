@@ -63,14 +63,14 @@
                   <?php endif; ?>
                   
                   <?php if(config('settings.enable_guest_log')): ?>
-                    <li class="web-menu mr-1">
+                    <!-- <li class="web-menu mr-1">
                       <a  href="<?php echo e(route('register.visit',['restaurant_id'=>$restorant->id])); ?>" class="btn btn-neutral btn-icon btn-cart" style="cursor:pointer;">
                             <span class="btn-inner--icon">
                               <i class="fa fa-calendar-plus-o"></i>
                             </span>
                             <span class="nav-link-inner--text"><?php echo e(__('Register visit')); ?></span>
                         </a>
-                    </li>
+                    </li> -->
                   <?php endif; ?>
 
                   <?php if(isset($hasGuestOrders)&&$hasGuestOrders): ?>
@@ -124,10 +124,10 @@
 
 
                   <?php if(config('settings.enable_guest_log')): ?>
-                    <a href="<?php echo e(route('register.visit',['restaurant_id'=>$restorant->id])); ?>" class="nav-link" style="cursor:pointer;">
+                    <!-- <a href="<?php echo e(route('register.visit',['restaurant_id'=>$restorant->id])); ?>" class="nav-link" style="cursor:pointer;">
                         <i class="fa fa-calendar-plus-o"></i>
                         <span class="nav-link-inner--text"><?php echo e(__('Register visit')); ?></span>
-                    </a>
+                    </a> -->
                   <?php endif; ?>
 
                   <?php if(isset($hasGuestOrders)&&$hasGuestOrders): ?>

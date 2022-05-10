@@ -138,14 +138,15 @@ class BaseOrderRepository extends Controller
   
 
         if($this->order==null){
-         
+            // dd($this->request->all());die;
             $this->order=new Order;
             $this->order->restorant_id=$this->vendor->id;
             $this->order->comment="";
             $this->order->payment_method=$this->request->payment_method;
             $this->order->payment_status="unpaid";
             $this->order->tips=$this->request->tips;
-            
+             $this->order->sales_tax=$this->request->sales_tax;
+            $this->order->tip_amount=$this->request->tip_amount;
             $this->order->custom_tip=$this->request->custom_tip;
             $this->order->checkout_phone_field=$this->request->checkout_phone;
             $this->order->checkout_customer_email_field=$this->request->checkout_customer_email_field;
@@ -185,9 +186,10 @@ class BaseOrderRepository extends Controller
                 
      
             $vat =  $restorant[0]->vat;
+
             $vatcal = ($subtotal/100) * $vat;
+            // print_r((round($vatcal,2));die;
             $netcal= ($subtotal- $vat);
-            
             $total = $subtotal + $vatcal; 
 
             if($custom_tip==0){

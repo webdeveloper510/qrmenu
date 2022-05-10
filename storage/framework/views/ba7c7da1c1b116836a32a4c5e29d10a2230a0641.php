@@ -26,6 +26,7 @@
                                   $custom_tip = $restorant['custom_tip'];
                                   $tips = $restorant['tips'];
                                   $vat = $restorant['vat'];
+                                  
                                   $tips_array1 = explode(",",$tips); 
                                   $tips_array = array_filter($tips_array1);?>
 
