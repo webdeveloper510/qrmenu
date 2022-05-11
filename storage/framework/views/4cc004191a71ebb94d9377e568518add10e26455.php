@@ -100,7 +100,8 @@
                     <?php endif; ?>
                  <?php endif; ?>
                  <!-- <span><?php if( $order['tips']>0): ?>Tips: <?php echo e($order['tips']); ?>%<?php endif; ?></span> -->
-                  <p><?php echo e($item->pivot->item_comment); ?></p>   
+                  <p><?php echo e($item->pivot->item_comment); ?></p>
+                  
              </h4>
                  <?php if(strlen($item->pivot->variant_name)>2): ?>
                      <br />

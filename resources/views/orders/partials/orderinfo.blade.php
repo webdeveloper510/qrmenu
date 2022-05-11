@@ -99,7 +99,8 @@
                     @endif
                  @endif
                  <!-- <span>@if ( $order['tips']>0)Tips: {{$order['tips']}}%@endif</span> -->
-                  <p>{{ $item->pivot->item_comment }}</p>   
+                  <p>{{ $item->pivot->item_comment }}</p>
+                  
              </h4>
                  @if (strlen($item->pivot->variant_name)>2)
                      <br />

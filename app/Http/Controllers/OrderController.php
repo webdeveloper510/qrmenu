@@ -300,8 +300,14 @@ class OrderController extends Controller
         if($request->has('custom_tip')){
             $custom_tip=$request->custom_tip;
         }
-        $tipamount = $tips/100*$checkout_subtotal_field;
-        $tip_amount = (round($tipamount,2));
+        if($custom_tip==0){
+            $tipamount = $tips/100*$checkout_subtotal_field;
+            $tip_amount = (round($tipamount,2));
+        }
+        if($custom_tip==1){
+            $tip_amount = $tips;
+        }
+    
            
         $vat= $restorant->vat;
         $tax = ($checkout_subtotal_field/100) * $vat;
