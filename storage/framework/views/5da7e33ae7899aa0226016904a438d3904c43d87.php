@@ -45,7 +45,9 @@
 
     </td>
     <td class="table-web">
-        <?php echo money($order->order_price_with_discount, config('settings.cashier_currency'),config('settings.do_convertion')); ?>
+        <?php echo money($order->order_price_with_discount + $order->delivery_price + (double) $order->sales_tax + (double)$order->tip_amount, config('settings.cashier_currency'),config('settings.do_convertion')); ?>
+
+        
     </td>
     <td>
         <?php echo $__env->make('orders.partials.laststatus', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

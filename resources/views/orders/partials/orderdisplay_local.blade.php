@@ -42,7 +42,9 @@
         {{ count($order->items) }}
     </td>
     <td class="table-web">
-        @money( $order->order_price_with_discount, config('settings.cashier_currency'),config('settings.do_convertion'))
+        @money( $order->order_price_with_discount + $order->delivery_price + (double) $order->sales_tax + (double)$order->tip_amount, config('settings.cashier_currency'),config('settings.do_convertion'))
+
+        
     </td>
     <td>
         @include('orders.partials.laststatus')

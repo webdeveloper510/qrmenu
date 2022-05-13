@@ -17,7 +17,8 @@ trait HasStripe
 
     public function payOrder(){
         try {
-            $total_price = (int) (($this->order->order_price_with_discount + $this->order->delivery_price) * 100);
+            //$total_price = (int) (($this->order->order_price_with_discount + $this->order->delivery_price) * 100);
+            $total_price = (int) (($this->order->order_price_with_discount + $this->order->delivery_price + (double) $this->order->sales_tax + (double)$this->order->tip_amount) * 100);
             $chargeOptions = [];
             
             //Setup based on vendor
