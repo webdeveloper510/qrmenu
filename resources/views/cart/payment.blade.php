@@ -57,7 +57,7 @@
                             <span v-if="totalPrice"><strong>{{ __('Subtotal') }}:</strong></span>
                             <span v-if="totalPrice" class="ammount_sub"><strong>@{{ totalPriceFormat}}</strong></span>
                             <br>
-                            <span><strong>{{ __('Tax') }}:</strong></span>
+                            <span class="tax_label"><strong>{{ __('Tax') }}</strong></span>
                             <span class="tax_ammount"><strong></strong></span>
                             <input type="hidden" name="tax_hidden" id="tax_hidden" value="{{$restorant->vat}}">
 
@@ -208,7 +208,7 @@
 
         <!-- <div class="text-left pl-4"> -->
         <div class="text-center">
-           <div class="custom-control custom-checkbox mb-3">
+           <div class="custom-control custom-checkbox mb-3 mobile-checkbox">
                 <input class="custom-control-input" id="special_offers" type="checkbox" value='1' checked>
               
                 <label class="custom-control-label special_offers" for="special_offers">
@@ -343,7 +343,22 @@ input#tips {
     border: 3px solid #7082e7;
 }
 
+@media only screen and (max-width: 600px) {
+    label.custom-control-label.special_offers::before {
+    left: 0px !important;
+}
+    label.custom-control-label.special_offers::after {
+    left: 0px !important;
+}
 
+.custom-control.custom-checkbox.mb-3.mobile-checkbox {
+    padding: 0 !important;
+}
+label.custom-control-label.special_offers {
+    text-align: left !important;
+}
+ 
+}
 
   </style>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->

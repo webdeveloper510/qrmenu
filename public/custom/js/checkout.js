@@ -121,15 +121,19 @@ $("#custom_tip").change(function() {
     
     setTimeout(function(){
 
+
+
         var total_ori = $('.ammount1 strong').html();
         var tax_ammount = $('#tax_hidden').val();
+
+        $('.tax_label strong').append('('+tax_ammount+'%):');
         
         var sub_total_ori = $('.ammount_sub strong').html();
         var currency = sub_total_ori.replace(/[\d\., ]/g, '');
         var sub_total = sub_total_ori.replace(currency, '');
         var tax_ammount =  (tax_ammount * sub_total / 100).toFixed(2);
         $('.tip_amt strong').html(currency+'0');
-        
+
         var fn_tot= parseFloat(tax_ammount)+parseFloat(total_ori);
         fn_tot= fn_tot.toFixed(2);
         $('.tax_ammount strong').html(currency+tax_ammount);
