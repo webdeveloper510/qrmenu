@@ -356,7 +356,7 @@ input#tips {
 }
 label.custom-control-label.special_offers {
     text-align: left !important;
-}
+} 
  
 }
 
