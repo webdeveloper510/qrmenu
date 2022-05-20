@@ -358,15 +358,16 @@ class OrderController extends Controller
 
     public function store(Request $request){
       
-      $validatedData = $request->validate([
-         'checkout_customer_email_field' => 'required|email',
-         //'phone' => 'required',
+        $validatedData = $request->validate([
+            'checkout_customer_email_field' => 'required|email',
+            'checkout_phone_field' =>'required|min:14',
 
         ],
         [
             'checkout_customer_email_field.required' => 'Email is required',
-            //'phone.required' => 'Phone is required'
+            'checkout_phone_field.required' => 'Phone is required'
         ]);
+
         //checkout_customer_email_field
         //checkout_phone_field
         //Convert web request to mobile like request

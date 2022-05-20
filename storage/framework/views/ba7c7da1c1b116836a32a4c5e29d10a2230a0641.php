@@ -1,7 +1,8 @@
 
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
 
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.8/css/intlTelInput.css" />
+   
 
 
 
@@ -91,27 +92,7 @@
                             <span><strong><?php echo e(__('Grand Total:')); ?></strong></span>
                             <span class="grand_amt"><strong></strong></span>
                             <br>
-                           <!--   <span v-if="totalPrice"><strong><?php echo e(__('Email')); ?>:</strong></span>
-                            <input type="email" class="form-control" name="checkout_customer_email_field" id="checkout_customer_email_field">
-                            <span v-if="totalPrice"><strong><?php echo e(__('Phone')); ?>:</strong></span>
-                            <input type="text" name="checkout_phone_field" id="checkout_phone_field" class="form-control" placeholder="81234 56789"> -->
-                            <!-- <input name="tips" class="tips-input" id="tips" type="number"> -->
-                            <!-- <div class="tips-radio mb-3">
-                              <input name="tips" class="tips-input" id="tips" type="radio" value="tip1" checked>
-                              <label class="tips-label"><?php echo e(__('10%')); ?></label>
-                            </div>
-                            <div class="tips-radio mb-3">
-                              <input name="tips" class="tips-input" id="tips" type="radio" value="tip2">
-                              <label class="tips-label"><?php echo e(__('15%')); ?></label>
-                            </div>
-                            <div class="tips-radio mb-3">
-                              <input name="tips" class="tips-input" id="tips" type="radio" value="tip3">
-                              <label class="tips-label"><?php echo e(__('25%')); ?></label>
-                            </div>
-                            <div class="tips-radio mb-3">
-                              <input name="tips" class="tips-input" id="tips" type="radio" value="tip4">
-                              <label class="tips-label"><?php echo e(__('Custom $')); ?></label>
-                            </div> -->
+                           
 
 
 
@@ -160,6 +141,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                         <div class="" id="local_phone">
                         <span><strong><?php echo e(__('Phone')); ?>:</strong></span>
+
                         <!-- <input type="text" name="checkout_phone_field" id="checkout_phone_field" class="form-control" placeholder="81234 56789"> -->
 
 
@@ -191,20 +173,20 @@ unset($__errorArgs, $__bag); ?>
                             <?php endif; ?>
                         </div> -->
                         <div class="form-group">
-                            <input type="text" name="phone" id="phone"  class="form-control input_sec <?php $__errorArgs = ['phone'];
+                            <input type="text" name="checkout_phone_field" id="checkout_phone_field"  class="form-control input_sec <?php $__errorArgs = ['checkout_phone_field'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="" placeholder="<?php echo e(__( 'Your phone here' )); ?> ..." required></input>
-                            <?php $__errorArgs = ['phone'];
+unset($__errorArgs, $__bag); ?>" value="" placeholder="<?php echo e(__( 'Your phone here' )); ?> ..."  required></input>
+                            <?php $__errorArgs = ['checkout_phone_field'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?><span class="invalid-feedback" role="alert">
-                            <input type="hidden" name="test" id="test">
+                            
                             <strong><?php echo e($message); ?></strong></span><?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
@@ -400,12 +382,14 @@ input#tips {
 }
 label.custom-control-label.special_offers {
     text-align: left !important;
-}
+} 
  
 }
 
   </style>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+
+ <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.8/js/intlTelInput-jquery.min.js"></script> -->
 <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script> 
 <script>
 /*  jQuery(document).ready(function(){
@@ -435,6 +419,7 @@ label.custom-control-label.special_offers {
 
 
 
-$("#phone").inputmask({"mask":"(999) 999-9999"});
-
+$("#checkout_phone_field").inputmask({"mask":"(999) 999-9999"});
+  /*$("#checkout_phone_field").intlTelInput({
+    });*/
 </script><?php /**PATH D:\xampp\htdocs\qrmenu\resources\views/cart/payment.blade.php ENDPATH**/ ?>

@@ -1,7 +1,8 @@
 
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
 
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.8/css/intlTelInput.css" />
+   
 
 
 
@@ -91,27 +92,7 @@
                             <span><strong>{{ __('Grand Total:') }}</strong></span>
                             <span class="grand_amt"><strong></strong></span>
                             <br>
-                           <!--   <span v-if="totalPrice"><strong>{{ __('Email') }}:</strong></span>
-                            <input type="email" class="form-control" name="checkout_customer_email_field" id="checkout_customer_email_field">
-                            <span v-if="totalPrice"><strong>{{ __('Phone') }}:</strong></span>
-                            <input type="text" name="checkout_phone_field" id="checkout_phone_field" class="form-control" placeholder="81234 56789"> -->
-                            <!-- <input name="tips" class="tips-input" id="tips" type="number"> -->
-                            <!-- <div class="tips-radio mb-3">
-                              <input name="tips" class="tips-input" id="tips" type="radio" value="tip1" checked>
-                              <label class="tips-label">{{ __('10%') }}</label>
-                            </div>
-                            <div class="tips-radio mb-3">
-                              <input name="tips" class="tips-input" id="tips" type="radio" value="tip2">
-                              <label class="tips-label">{{ __('15%') }}</label>
-                            </div>
-                            <div class="tips-radio mb-3">
-                              <input name="tips" class="tips-input" id="tips" type="radio" value="tip3">
-                              <label class="tips-label">{{ __('25%') }}</label>
-                            </div>
-                            <div class="tips-radio mb-3">
-                              <input name="tips" class="tips-input" id="tips" type="radio" value="tip4">
-                              <label class="tips-label">{{ __('Custom $') }}</label>
-                            </div> -->
+                           
 
 
 
@@ -146,6 +127,7 @@
                             <strong>{{$message}}</strong></span>@enderror
                         <div class="" id="local_phone">
                         <span><strong>{{ __('Phone') }}:</strong></span>
+
                         <!-- <input type="text" name="checkout_phone_field" id="checkout_phone_field" class="form-control" placeholder="81234 56789"> -->
 
 
@@ -163,9 +145,9 @@
                             @endif
                         </div> -->
                         <div class="form-group">
-                            <input type="text" name="phone" id="phone"  class="form-control input_sec @error('phone') is-invalid @enderror" value="" placeholder="{{ __( 'Your phone here' ) }} ..." required></input>
-                            @error('phone')<span class="invalid-feedback" role="alert">
-                            <input type="hidden" name="test" id="test">
+                            <input type="text" name="checkout_phone_field" id="checkout_phone_field"  class="form-control input_sec @error('checkout_phone_field') is-invalid @enderror" value="" placeholder="{{ __( 'Your phone here' ) }} ..."  required></input>
+                            @error('checkout_phone_field')<span class="invalid-feedback" role="alert">
+                            
                             <strong>{{$message}}</strong></span>@enderror
                         </div>
                         @if(!config('settings.is_whatsapp_ordering_mode'))
@@ -362,6 +344,8 @@ label.custom-control-label.special_offers {
 
   </style>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+
+ <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.8/js/intlTelInput-jquery.min.js"></script> -->
 <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script> 
 <script>
 /*  jQuery(document).ready(function(){
@@ -391,6 +375,7 @@ label.custom-control-label.special_offers {
 
 
 
-$("#phone").inputmask({"mask":"(999) 999-9999"});
-
+$("#checkout_phone_field").inputmask({"mask":"(999) 999-9999"});
+  /*$("#checkout_phone_field").intlTelInput({
+    });*/
 </script>
