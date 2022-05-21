@@ -145,8 +145,8 @@
                             @endif
                         </div> -->
                         <div class="form-group">
-                            <input type="text" name="checkout_phone_field" id="checkout_phone_field"  class="form-control input_sec @error('checkout_phone_field') is-invalid @enderror" value="" placeholder="{{ __( 'Your phone here' ) }} ..."  required></input>
-                            @error('checkout_phone_field')<span class="invalid-feedback" role="alert">
+                            <input type="text" name="phone_field" id="phone_field"  class="form-control input_sec @error('phone_field') is-invalid @enderror" value="" placeholder="{{ __( 'Your phone here' ) }} ..."  required></input>
+                            @error('phone_field')<span class="invalid-feedback" role="alert">
                             
                             <strong>{{$message}}</strong></span>@enderror
                         </div>
@@ -375,7 +375,7 @@ label.custom-control-label.special_offers {
 
 
 
-$("#checkout_phone_field").inputmask({"mask":"(999) 999-9999"});
+$("#phone_field").inputmask({"mask":"(999) 999-9999"});
   /*$("#checkout_phone_field").intlTelInput({
     });*/
 </script>

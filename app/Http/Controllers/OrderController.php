@@ -360,12 +360,13 @@ class OrderController extends Controller
       
         $validatedData = $request->validate([
             'checkout_customer_email_field' => 'required|email',
-            'checkout_phone_field' =>'required|min:14',
+            'phone_field' =>'required|min:14|max:14|regex:/^([0-9\s\-\+\(\)]*)$/',
+
 
         ],
         [
             'checkout_customer_email_field.required' => 'Email is required',
-            'checkout_phone_field.required' => 'Phone is required'
+            'phone_field.required' => 'Phone is required'
         ]);
 
         //checkout_customer_email_field

@@ -107,10 +107,10 @@ $("#checkout_customer_email_field").change(function() {
     $(document.body).find('#checkoutPayPhoneField').val($(document.body).find('#checkout_phone_field').val());
 });*/
 
-$("#checkout_phone_field").keyup(function() {
+$("#phone_field").keyup(function() {
    // $(document).on('change','#phone',function(){
     
-    $(document.body).find('#checkoutPayPhoneField').val($(document.body).find('#checkout_phone_field').val());
+    $(document.body).find('#checkoutPayPhoneField').val($(document.body).find('#phone_field').val());
    
 });
 $("#custom_tip").change(function() {

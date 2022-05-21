@@ -173,7 +173,7 @@ unset($__errorArgs, $__bag); ?>
                             <?php endif; ?>
                         </div> -->
                         <div class="form-group">
-                            <input type="text" name="checkout_phone_field" id="checkout_phone_field"  class="form-control input_sec <?php $__errorArgs = ['checkout_phone_field'];
+                            <input type="text" name="phone_field" id="phone_field"  class="form-control input_sec <?php $__errorArgs = ['phone_field'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -181,7 +181,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="" placeholder="<?php echo e(__( 'Your phone here' )); ?> ..."  required></input>
-                            <?php $__errorArgs = ['checkout_phone_field'];
+                            <?php $__errorArgs = ['phone_field'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -419,7 +419,7 @@ label.custom-control-label.special_offers {
 
 
 
-$("#checkout_phone_field").inputmask({"mask":"(999) 999-9999"});
+$("#phone_field").inputmask({"mask":"(999) 999-9999"});
   /*$("#checkout_phone_field").intlTelInput({
     });*/
 </script><?php /**PATH D:\xampp\htdocs\qrmenu\resources\views/cart/payment.blade.php ENDPATH**/ ?>
