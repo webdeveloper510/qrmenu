@@ -359,7 +359,7 @@ class OrderController extends Controller
     public function store(Request $request){
       
         $validatedData = $request->validate([
-            'checkout_customer_email_field' => 'required|email',
+            'checkout_customer_email_field' => 'required',
             'phone_field' =>'required|min:14|max:14|regex:/^([0-9\s\-\+\(\)]*)$/',
 
 

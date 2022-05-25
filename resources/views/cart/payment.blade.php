@@ -378,4 +378,73 @@ label.custom-control-label.special_offers {
 $("#phone_field").inputmask({"mask":"(999) 999-9999"});
   /*$("#checkout_phone_field").intlTelInput({
     });*/
+
+
+
+$(document).on('blur','#checkout_customer_email_field',function(){
+    
+    var checkout_customer_email_field=$('#checkout_customer_email_field').val();
+    var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+    if(checkout_customer_email_field.length == 0){
+        $('#checkout_customer_email_field').next(".red").remove();
+        $('#checkout_customer_email_field').after('<div class="red" style="color:red">Email Field is Required</div>');
+        $('.paymentbutton').attr("disabled", true);
+        return false;
+    }
+    else if(!pattern.test(checkout_customer_email_field))
+    {
+       $('#checkout_customer_email_field').next(".red").remove();
+       $('#checkout_customer_email_field').after('<div class="red" style="color:red">The email field must be a valid email address.</div>');
+       $('.paymentbutton').attr("disabled", true);
+       return false;
+    }
+    else {
+        $('#checkout_customer_email_field').next(".red").remove();
+        $('.paymentbutton').attr("disabled", false);
+        return true;
+    }
+
+    
+    
+
+
+
+});
+$(document).on('blur','#phone_field',function(){
+    
+    var phone_field=$('#phone_field').val();
+   
+    var pattern = /(\d{0,3})(\d{0,3})(\d{0,4})/
+
+    var phoneno = parseInt(phone_field.replace(/[^0-9.]/g, ""));
+    phoneno = phoneno.toString().length;
+  
+
+    if(phone_field.length == 0){
+        $('#phone_field').next(".red").remove();
+        
+       $('#phone_field').after('<div class="red" style="color:red">Phone is Required</div>');
+       $('.paymentbutton').attr("disabled", true);
+        return false;
+    }
+   // else if(phone_field.length. < 14 ){
+
+    else if(phoneno < 10){
+        
+       $('#phone_field').next(".red").remove();
+        
+       $('#phone_field').after('<div class="red" style="color:red">The phone field format is invalid.</div>');
+        
+        return false;
+    }
+
+    else {
+        $('#phone_field').next(".red").remove();
+        $('.paymentbutton').attr("disabled", false);
+        return true;
+    }
+   
+
+});
+
 </script>
