@@ -199,7 +199,7 @@
                 </label>
             </div>
         </div><br /> -->
-        <div class="text-center">
+        <div class="text-center privacy-main">
             <div class="custom-control custom-checkbox mb-3">
                 <input class="custom-control-input" id="privacypolicy" type="checkbox"  value='0'>
                
@@ -224,17 +224,18 @@
                     <a href="{{config('settings.link_to_pr')}}" target="_blank" style="text-decoration: underline;">{{__('Privacy Policy')}}</a>.
                 </label>  -->
 
-                <label class="custom-control-label" for="privacypolicy">
-                    <span>In order to send you a receipt please enter your phone number and email address</span><br>
+                <label class="custom-control-label label-first-check" for="privacypolicy">
+                    <span>In order to send you a receipt please enter your phone number and email address.</span><br>
                     
                 </label> 
                 <label>
-                    <span>I agree to be contacted for offers, special deals, and other marketing communcation</span><br>
+                    <span>I agree to be contacted for offers, special deals, and other marketing communcation.</span><br>
                     
                 </label>
                 <label><span>I agree to the</span>
                     <a href="{{config('settings.link_to_ts')}}" target="_blank" style="text-decoration: underline;">{{__('Terms of Service')}}</a> {{__('and')}}
-                    <a href="{{config('settings.link_to_pr')}}" target="_blank" style="text-decoration: underline;">{{__('Privacy Policy')}}</a>.</label>
+                    <a href="{{config('settings.link_to_pr')}}" target="_blank" style="text-decoration: underline;">{{__('Privacy Policy')}}</a>.
+                </label>
             </div>
         </div><br />
 
@@ -367,6 +368,13 @@ label.custom-control-label.special_offers {
     text-align: left !important;
 } 
  
+}
+.privacy-main {
+    text-align: left !important;
+    padding: 1.5rem;
+}
+.label-first-check{
+    margin-bottom: 0.5rem;
 }
 
   </style>

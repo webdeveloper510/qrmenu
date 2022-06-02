@@ -241,7 +241,7 @@ unset($__errorArgs, $__bag); ?>
                 </label>
             </div>
         </div><br /> -->
-        <div class="text-center">
+        <div class="text-center privacy-main">
             <div class="custom-control custom-checkbox mb-3">
                 <input class="custom-control-input" id="privacypolicy" type="checkbox"  value='0'>
                
@@ -270,7 +270,7 @@ unset($__errorArgs, $__bag); ?>
                     <a href="<?php echo e(config('settings.link_to_pr')); ?>" target="_blank" style="text-decoration: underline;"><?php echo e(__('Privacy Policy')); ?></a>.
                 </label>  -->
 
-                <label class="custom-control-label" for="privacypolicy">
+                <label class="custom-control-label label-first-check" for="privacypolicy">
                     <span>In order to send you a receipt please enter your phone number and email address</span><br>
                     
                 </label> 
@@ -281,7 +281,8 @@ unset($__errorArgs, $__bag); ?>
                 <label><span>I agree to the</span>
                     <a href="<?php echo e(config('settings.link_to_ts')); ?>" target="_blank" style="text-decoration: underline;"><?php echo e(__('Terms of Service')); ?></a> <?php echo e(__('and')); ?>
 
-                    <a href="<?php echo e(config('settings.link_to_pr')); ?>" target="_blank" style="text-decoration: underline;"><?php echo e(__('Privacy Policy')); ?></a>.</label>
+                    <a href="<?php echo e(config('settings.link_to_pr')); ?>" target="_blank" style="text-decoration: underline;"><?php echo e(__('Privacy Policy')); ?></a>.
+                </label>
             </div>
         </div><br />
 
@@ -414,6 +415,13 @@ label.custom-control-label.special_offers {
     text-align: left !important;
 } 
  
+}
+.privacy-main {
+    text-align: left !important;
+    padding: 1.5rem;
+}
+.label-first-check{
+    margin-bottom: 0.5rem;
 }
 
   </style>
