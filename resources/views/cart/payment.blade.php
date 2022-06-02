@@ -120,7 +120,7 @@
                             <div role="alert" class="alert alert-danger">{{ session('error') }}</div>
                         @endif
                         <input type="hidden" name="checkout_subtotal_field" id="checkout_subtotal_field" class="form-control" placeholder="81234 56789">
-                        <span>In order to send you a receipt please enter your phone number and email address</span><br><br>
+                        <!-- <span>In order to send you a receipt please enter your phone number and email address</span><br><br> -->
                         <span><strong>{{ __('Email') }}:</strong></span>
                         <input type="email" class="form-control input_sec @error('checkout_customer_email_field') is-invalid @enderror" name="checkout_customer_email_field" id="checkout_customer_email_field">
                         @error('checkout_customer_email_field')<span class="invalid-feedback" role="alert">
@@ -189,7 +189,7 @@
         <!-- END Payment -->
 
         <!-- <div class="text-left pl-4"> -->
-        <div class="text-center">
+        <!-- <div class="text-center">
            <div class="custom-control custom-checkbox mb-3 mobile-checkbox">
                 <input class="custom-control-input" id="special_offers" type="checkbox" value='1' checked>
               
@@ -198,16 +198,43 @@
                     
                 </label>
             </div>
-        </div><br />
+        </div><br /> -->
         <div class="text-center">
             <div class="custom-control custom-checkbox mb-3">
                 <input class="custom-control-input" id="privacypolicy" type="checkbox"  value='0'>
                
-                <label class="custom-control-label" for="privacypolicy">
+                
+                <!-- <label class="custom-control-label" for="privacypolicy">
                     &nbsp;&nbsp;{{__('I agree to the')}}
                     <a href="{{config('settings.link_to_ts')}}" target="_blank" style="text-decoration: underline;">{{__('Terms of Service')}}</a> {{__('and')}}
                     <a href="{{config('settings.link_to_pr')}}" target="_blank" style="text-decoration: underline;">{{__('Privacy Policy')}}</a>.
+                </label> -->
+                <!-- <label class="custom-control-label" for="privacypolicy">
+                    &nbsp;&nbsp;{{__('In order to send you a receipt please enter your phone number and email address')}}
                 </label>
+                <label class="custom-control-label special_offers" for="special_offers">
+                   I agree to be contacted for offers, special deals, and other marketing communcation
+                    
+                </label> -->
+                <!-- <label class="custom-control-label" for="privacypolicy">
+                    <span>In order to send you a receipt please enter your phone number and email address</span><br>
+                    <span>I agree to be contacted for offers, special deals, and other marketing communcation</span><br>
+                    <span>I agree to the</span>
+                    <a href="{{config('settings.link_to_ts')}}" target="_blank" style="text-decoration: underline;">{{__('Terms of Service')}}</a> {{__('and')}}
+                    <a href="{{config('settings.link_to_pr')}}" target="_blank" style="text-decoration: underline;">{{__('Privacy Policy')}}</a>.
+                </label>  -->
+
+                <label class="custom-control-label" for="privacypolicy">
+                    <span>In order to send you a receipt please enter your phone number and email address</span><br>
+                    
+                </label> 
+                <label>
+                    <span>I agree to be contacted for offers, special deals, and other marketing communcation</span><br>
+                    
+                </label>
+                <label><span>I agree to the</span>
+                    <a href="{{config('settings.link_to_ts')}}" target="_blank" style="text-decoration: underline;">{{__('Terms of Service')}}</a> {{__('and')}}
+                    <a href="{{config('settings.link_to_pr')}}" target="_blank" style="text-decoration: underline;">{{__('Privacy Policy')}}</a>.</label>
             </div>
         </div><br />
 
